@@ -1,0 +1,737 @@
+/* ==========================================================================
+   Reset & Base
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   Fonts (직접 폰트 파일을 fonts/ 폴더에 저장해서 불러옵니다 — 무료 폰트 5종)
+   ========================================================================== */
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter/inter-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter/inter-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter/inter-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("fonts/Inter/inter-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("fonts/SpaceGrotesk/space-grotesk-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("fonts/SpaceGrotesk/space-grotesk-latin-500-normal.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("fonts/SpaceGrotesk/space-grotesk-latin-600-normal.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("fonts/SpaceGrotesk/space-grotesk-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("fonts/InstrumentSerif/instrument-serif-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("fonts/InstrumentSerif/instrument-serif-latin-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* General Sans · Satoshi 는 파일이 아니라 index.html의 Fontshare 링크로 불러옵니다
+   (두 폰트 모두 Fontshare 자체 무료 배포 방식이라 파일을 직접 받는 대신
+   그쪽 링크로 불러오는 게 표준적인 사용법이에요) */
+
+/* Pretendard — General Sans / Inter와 어울리는 한글 폰트 (자체 호스팅) */
+@font-face {
+  font-family: "Pretendard";
+  src: url("fonts/Pretendard/Pretendard-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("fonts/Pretendard/Pretendard-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("fonts/Pretendard/Pretendard-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("fonts/Pretendard/Pretendard-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/*
+  ▸ 이 파일은 모바일 퍼스트로 작성되어 있습니다.
+    아래(기본) 스타일은 모두 "모바일 화면 기준"이고, 화면이 커질수록
+    파일 맨 아래 @media (min-width: ...) 구간에서 스타일이 덧붙여집니다.
+    (기존 데스크톱 퍼스트와 반대 방향 — 작은 화면이 먼저, 큰 화면은 나중)
+
+  ▸ 아래 변수 값만 바꾸면 사이트 전체 색상/여백이 한번에 바뀝니다.
+    --black / --white : 기본 배경·글자색 (에디토리얼 흑백 톤)
+    --gray, --gray-light : 보조 텍스트, 구분선 색상
+    --gray-box : 이미지 자리(회색 박스), 아카이브 카드 이미지 영역 색상
+    --header-h : 상단 고정 헤더 높이
+    --edge : 좌우 여백 (모바일 기본값은 24px, 화면이 커지면 6vw로 넓어짐)
+
+  ▸ 새로 추가된 폰트 6종을 쓰고 싶은 곳에 아래 font-family 값을 넣으면 됩니다:
+    "Inter"             — 깔끔한 UI/본문용 산세리프 (영문 본문 전체에 적용됨)
+    "Space Grotesk"     — 개성 있는 제목용 산세리프 (모노스페이스 느낌)
+    "Instrument Serif"  — 우아한 세리프 (굵기는 400 하나뿐)
+    "General Sans"      — 모던하고 중립적인 산세리프 (타이틀/큰 항목에 적용됨)
+    "Satoshi"           — 지오메트릭한 산세리프
+    "Pretendard"        — General Sans/Inter와 어울리는 한글 폰트 (한글은 자동으로 이 폰트로 대체됨)
+
+  ▸ 현재 적용 상태:
+    - 타이틀류(히어로 타이틀, 섹션 타이틀, 연도 헤딩, 프로젝트 카드 제목, 이메일)는 General Sans
+    - 그 외 본문/설명 전체는 Inter (영문은 Inter로, 한글은 Inter에 없는 글자라 자동으로 Pretendard로 대체됨)
+*/
+:root {
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --gray: #9a9a9a;
+  --gray-light: #e5e5e5;
+  --gray-box: #d9d9d9;
+  --header-h: 80px;
+  --edge: 24px;
+  --font-inter: "Inter", "Pretendard", "Apple SD Gothic Neo", "Helvetica Neue", Arial, sans-serif;
+  --font-space-grotesk: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-instrument-serif: "Instrument Serif", Georgia, serif;
+  --font-general-sans: "General Sans", "Pretendard", "Apple SD Gothic Neo", "Helvetica Neue", Arial, sans-serif;
+  --font-satoshi: "Satoshi", "Helvetica Neue", Arial, sans-serif;
+  --font-pretendard: "Pretendard", "Apple SD Gothic Neo", "Helvetica Neue", Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter);
+  background: var(--white);
+  color: var(--black);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+section {
+  padding: 80px var(--edge);
+}
+
+/* ==========================================================================
+   Header / Nav (기본 = 모바일: 햄버거 메뉴 + 드롭다운)
+   ========================================================================== */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--edge);
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.logo {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.site-nav {
+  position: fixed;
+  top: var(--header-h);
+  left: 0;
+  right: 0;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-bottom: 1px solid var(--gray-light);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.site-nav.open {
+  max-height: 320px;
+}
+
+.site-nav a {
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  position: relative;
+  padding: 18px var(--edge);
+  border-top: 1px solid var(--gray-light);
+}
+
+.site-nav a::after {
+  content: "";
+  position: absolute;
+  left: var(--edge);
+  bottom: 6px;
+  width: 0;
+  height: 1px;
+  background: var(--black);
+  transition: width 0.25s ease;
+}
+
+.site-nav a:hover::after {
+  width: 24px;
+}
+
+.menu-toggle {
+  display: flex;
+  width: 32px;
+  height: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 1px;
+  background: var(--black);
+  width: 100%;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: var(--black);
+  color: var(--white);
+  position: relative;
+  padding: 0 var(--edge);
+}
+
+.hero-eyebrow {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 24px;
+}
+
+.hero-title {
+  line-height: 0.9;
+}
+
+.hero-logo {
+  display: block;
+  width: clamp(240px, 42vw, 640px);
+  height: auto;
+}
+
+.hero-desc {
+  margin-top: 28px;
+  font-size: clamp(14px, 2vw, 18px);
+  color: var(--gray-light);
+  letter-spacing: 0.02em;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+/* ==========================================================================
+   Section head (shared)
+   ========================================================================== */
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 64px;
+}
+
+.section-num {
+  font-size: 14px;
+  color: var(--gray);
+  letter-spacing: 0.05em;
+}
+
+.section-title {
+  font-family: var(--font-general-sans);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   About
+   ========================================================================== */
+.about-lead,
+.about-body,
+.about-role,
+.about-facts {
+  max-width: clamp(480px, 74vw, 1700px);
+}
+
+.about-lead {
+  font-size: clamp(16px, 2.3vw, 40px);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: clamp(20px, 2.8vw, 40px);
+}
+
+.about-body {
+  font-size: clamp(15px, 1.5vw, 26px);
+  line-height: 1.65;
+  color: #333;
+  margin-bottom: clamp(28px, 3.6vw, 56px);
+}
+
+.about-role {
+  font-size: clamp(17px, 1.7vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: clamp(28px, 3.2vw, 48px);
+}
+
+.about-facts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  border-top: 1px solid var(--gray-light);
+  padding-top: 32px;
+}
+
+.about-facts dt {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.about-facts dd {
+  font-size: clamp(16px, 1.4vw, 25px);
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Archive (Selected Projects + Gallery 통합)
+   ========================================================================== */
+.archive-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 48px;
+  border-bottom: 1px solid var(--gray-light);
+  padding-bottom: 40px;
+}
+
+.filter-btn {
+  font-family: inherit;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  padding: 10px 20px;
+  border: 1px solid var(--black);
+  background: var(--white);
+  color: var(--black);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.filter-btn:hover {
+  background: var(--gray-light);
+}
+
+.filter-btn.active {
+  background: var(--black);
+  color: var(--white);
+}
+
+.archive-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 한 줄에 카드 몇 개? 모바일 기본은 1개 */
+  gap: 48px;
+}
+
+/* 연도 구분 헤딩: 그리드 폭 전체를 차지하도록 (컬럼 수와 무관하게) */
+.archive-year-heading {
+  grid-column: 1 / -1;
+  font-family: var(--font-general-sans);
+  font-size: clamp(24px, 3.2vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  padding-top: 8px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--gray-light);
+}
+
+.archive-year-heading:first-child {
+  padding-top: 0;
+}
+
+.archive-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.archive-card-image {
+  aspect-ratio: 4 / 3;
+  background: var(--gray-box);
+  display: flex;
+  align-items: flex-end;
+  padding: 14px;
+  margin-bottom: 20px;
+}
+
+.archive-card-image span {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: #7a7a7a;
+}
+
+/* 실제 이미지가 로드된 카드 (data.js의 image 필드가 있을 때) */
+.archive-card-image.has-image {
+  padding: 0;
+  align-items: stretch;
+  background: var(--gray-box);
+}
+
+.archive-card-image.has-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.archive-card-category {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 10px;
+}
+
+.archive-card-title {
+  font-family: var(--font-general-sans);
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.archive-card-yearclient {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.archive-card-venue,
+.archive-card-location {
+  font-size: 13px;
+  color: #444;
+}
+
+.archive-card-venue {
+  margin-bottom: 2px;
+}
+
+.archive-card-location {
+  color: var(--gray);
+  margin-bottom: 14px;
+}
+
+.archive-card-desc {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.archive-card-role-block {
+  margin-bottom: 14px;
+}
+
+.archive-card-role-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.archive-card-role-value {
+  font-size: 13px;
+  color: #333;
+}
+
+.archive-card-contrib {
+  border-top: 1px solid var(--gray-light);
+  padding-top: 14px;
+}
+
+.archive-card-contrib-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.archive-card-tasks {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.9;
+}
+
+.archive-card-tasks li::before {
+  content: "— ";
+  color: var(--gray);
+}
+
+.archive-card.is-hidden,
+.archive-year-heading.is-hidden {
+  display: none;
+}
+
+.archive-empty {
+  font-size: 14px;
+  color: var(--gray);
+  grid-column: 1 / -1;
+  padding: 40px 0;
+}
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+.contact {
+  background: var(--black);
+  color: var(--white);
+}
+
+.contact .section-num,
+.contact .section-title {
+  color: var(--white);
+}
+
+.contact-info {
+  display: inline-block;
+  font-family: var(--font-general-sans);
+  font-size: clamp(18px, 2.6vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.contact-info a {
+  text-decoration: none;
+}
+
+.contact-info a:hover {
+  color: var(--gray-light);
+}
+
+/* ==========================================================================
+   Footer (가볍게 — 작은 글씨 하나로만)
+   ========================================================================== */
+.site-footer {
+  padding: 20px var(--edge);
+  font-size: 11px;
+  color: #6b6b6b;
+  background: var(--black);
+  border-top: 1px solid #1c1c1c;
+}
+
+/* ==========================================================================
+   Scroll reveal (minimal, no excessive motion)
+   ========================================================================== */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* ==========================================================================
+   Responsive — 모바일 퍼스트: 화면이 커질수록 아래 순서대로 스타일이 추가됩니다.
+   ========================================================================== */
+
+/* ---- 태블릿 이상 (701px~) ---- */
+@media (min-width: 701px) {
+  :root {
+    --edge: 6vw;
+  }
+
+  section {
+    padding: 120px var(--edge);
+  }
+
+  .site-nav {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    background: none;
+    border-bottom: none;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .site-nav a {
+    padding: 0 0 4px;
+    border-top: none;
+  }
+
+  .site-nav a::after {
+    left: 0;
+  }
+
+  .site-nav a:hover::after {
+    width: 100%;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .archive-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px 32px;
+  }
+
+  .about-facts {
+    grid-template-columns: repeat(2, auto);
+    gap: 48px;
+  }
+
+  .contact-links {
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+
+/* ---- 데스크톱 (901px~) ---- */
+@media (min-width: 901px) {
+  .archive-grid {
+    grid-template-columns: repeat(3, 1fr); /* 한 줄에 카드 몇 개? 숫자만 바꾸면 됨 (예: 2, 4) */
+  }
+
+  .about-facts {
+    grid-template-columns: repeat(2, auto);
+  }
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DRILL TIES — Performance &amp; Event Director</title>
+<meta name="description" content="DRILL TIES. 공연 및 이벤트 연출가 포트폴리오 아카이브.">
+<!-- General Sans · Satoshi 폰트 (Fontshare 무료 폰트, 링크로 불러옴) -->
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=satoshi@400,500,700,900&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!--
+  이 사이트는 3개 파일로 나뉘어 있습니다.
+  - index.html : 페이지 구조/텍스트 (이 파일)
+  - style.css  : 색상·폰트 크기·간격 등 디자인
+  - data.js    : Featured Projects에 나오는 프로젝트 목록 (여기서 항목 추가/수정/삭제)
+  - script.js  : 메뉴, 필터 등 동작 로직 (내용 수정 시 건드릴 필요 없음)
+  아래 About / Contact 텍스트는 이 파일에서 바로 고치면 됩니다.
+-->
+
+<main>
+
+  <!-- 1. 풀스크린 메인 비주얼 -->
+  <section id="hero" class="hero">
+    <div class="hero-inner">
+      <h1 class="hero-title"><img class="hero-logo" src="images/drillties-logo.png" alt="Drillties" width="1693" height="434"></h1>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- 2. About : 아래 문구/경력/연도를 원하는 내용으로 바꾸면 됩니다 -->
+  <section id="about" class="about">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <h2 class="section-title">About</h2>
+    </div>
+    <div class="about-content">
+      <p class="about-lead">
+        Creating live experiences that connect people, brands and culture through planning and execution.
+      </p>
+      <p class="about-body">
+        라이브 이벤트와 페스티벌, 브랜드 프로젝트를 기획하고 연출합니다.
+        기획부터 제작, 운영까지 사람과 문화가 연결되는 경험을 만듭니다.
+      </p>
+      <p class="about-role">Creative Director / Project Manager</p>
+      <dl class="about-facts">
+        <div><dt>Based</dt><dd>Seoul, Korea</dd></div>
+        <div><dt>Since</dt><dd>2011</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 3. Featured Projects (Selected Projects + 이미지 그리드 통합) -->
+  <section id="archive" class="archive">
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Featured Projects</h2>
+    </div>
+    <div class="archive-filters" id="archiveFilters">
+      <button class="filter-btn active" data-filter="all" type="button">All</button>
+      <button class="filter-btn" data-filter="2026" type="button">2026</button>
+      <button class="filter-btn" data-filter="2025" type="button">2025</button>
+      <button class="filter-btn" data-filter="2024" type="button">2024</button>
+      <button class="filter-btn" data-filter="2023" type="button">2023</button>
+      <button class="filter-btn" data-filter="past" type="button">Past</button>
+    </div>
+    <div class="archive-grid" id="archiveGrid">
+      <!-- script.js가 프로젝트 카드를 여기에 렌더링합니다 -->
+    </div>
+  </section>
+
+  <!-- 4. Contact : 이메일·전화번호는 여기서 바로 고치면 됩니다. -->
+  <section id="contact" class="contact">
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-content">
+      <p class="contact-info"><a href="mailto:yi-seul@drill-ties.com">yi-seul@drill-ties.com</a> | Tel. +82-10-4007-7647</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>&copy; <span id="year"></span> DRILL TIES. All rights reserved.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
