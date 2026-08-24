@@ -134,7 +134,7 @@ const PROJECTS = [
     company: 'DRILLTIES', companyLabel: 'DRILL TIES', year: 2025,
     title: 'The Powerful',
     date: '2025.06.27~06.29',
-    client: '딴지일보 · 티클모아', venue: '인스파이어 아레나(인천 영종도)',
+    client: 'BTC COMMUNICATION · 티클모아', venue: '인스파이어 아레나(인천 영종도)',
     category: 'LIVE EXPERIENCE', venueEn: 'INSPIRE Arena', locationEn: 'Yeongjongdo, Incheon, Korea',
     production: '티클모아',
     role: 'Creative Planning, Production Support.',
