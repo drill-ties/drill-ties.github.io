@@ -364,7 +364,7 @@ const PROJECTS = [
   {
     company: 'FIG', companyLabel: 'FIG', year: 2024,
     title: 'dingo music concert 〈Killing Voice〉',
-    client: 'dingo music (MAKEUS) · FIG',
+    client: 'MAKEUS(dingo music) · FIG',
     category: 'LIVE CONCERT / BRAND EXPERIENCE', venueEn: 'Olympic Park Handball Gymnasium', locationEn: 'Seoul, Korea',
     role: 'Creative Direction · Project Management',
     desc: '디지털 음악 콘텐츠를 대형 라이브 무대와 관객 참여로 확장한 첫번째 라이브 이벤트',
