@@ -848,7 +848,28 @@ section {
   }
 
   .about-facts {
-    grid-template-columns: minmax(180px, 1.2fr) minmax(320px, 1.8fr) repeat(2, 1fr);
-    column-gap: 48px;
+    grid-template-columns: minmax(220px, 1.4fr) minmax(360px, 2.2fr) minmax(160px, 0.9fr) minmax(90px, 0.5fr);
+    column-gap: clamp(28px, 4vw, 72px);
+    align-items: start;
+  }
+
+  .about-facts dd {
+    font-size: 20px;
+  }
+
+  .about-profile dd {
+    font-size: 44px;
+  }
+
+  .about-facts > div {
+    padding-bottom: 0;
+  }
+
+  .about-facts > div:nth-child(-n + 4) {
+    padding-top: 0;
+  }
+
+  .about-facts > div:not(.about-work) dd {
+    white-space: nowrap;
   }
 }
