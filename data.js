@@ -31,6 +31,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction · Project Management',
     desc: '전국 투어 토크 콘서트 연출 및 진행',
     tasks: ['프로그램 및 공연 구성 총괄', '현장 리허설 및 쇼 플로우 총괄', '출연진 섭외 및 계약, 파트너 커뮤니케이션', '투어 정산 및 비용 관리'],
+    localImage: 'images/projects/2026-gyeomson-live-tour.jpg',
     image: 'https://tkfile.yes24.com/upload2/PerfBlog/202601/20260129/20260129-56961.jpg',
   },
 
@@ -70,6 +71,7 @@ const PROJECTS = [
     role: 'Technical Direction, Event management',
     desc: '故 신영복 선생 서거 10주기 추모식',
     tasks: ['추모식 진행 총괄', '출연진 및 파트너 커뮤니케이션'],
+    localImage: 'images/projects/2026-shin-young-bok-memorial.jpg',
   },
 
   {
@@ -94,6 +96,7 @@ const PROJECTS = [
     role: 'Creative Direction · Project Management',
     desc: '공식 환영식 진행 및 배우자 프로그램 공간 조성',
     tasks: ['공식 행사 진행 지원', '행사장 공간 디자인 및 가구·집기 조성'],
+    image: 'https://jinju.museum.go.kr/_prog/download/?func_gbn_cd=popup_zone&mng_no=411',
   },
 
   {
@@ -106,6 +109,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction · Project Management',
     desc: '광복 80년의 메시지를 대중음악, 미디어파사드와 드론쇼로 확장한 대규모 국가 기념 문화행사',
     tasks: ['프로그램 및 공연 구성 총괄', '현장 리허설 및 쇼 플로우 총괄', '출연진 및 관계자, 파트너 커뮤니케이션'],
+    image: 'https://korea815.go.kr/images/site/kor/sub/event1_img06.jpg',
   },
 
   {
@@ -162,6 +166,7 @@ const PROJECTS = [
     role: 'Show Direction · Project Management',
     desc: "악뮤(AKMU) 세 번째 정규앨범 '항해' 발매를 기념한 야외 청음회",
     tasks: ['쇼 플로우 연출 및 현장 리허설 진행', '출연진 및 파트너 커뮤니케이션'],
+    localImage: 'images/projects/2019-akmu.jpg',
   },
 
   {
@@ -172,6 +177,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction · Project Management',
     desc: '대통령 북유럽 순방 계기 문화 공연 프로그램',
     tasks: ['쇼 플로우 연출 및 현장 리허설 진행', '현지 업체 어레인지 및 커뮤니케이션', '출연자 계약·비자 수속, 의전 등 행사 진행 일체', '행사 정산 및 비용 관리'],
+    localImage: 'images/projects/2019-voyage-to-kpop.jpg',
     image: 'https://0.soompi.io/wp-content/uploads/2019/06/12202602/monsta-x-2.jpg',
   },
 
@@ -183,6 +189,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction',
     desc: '정동하 단독 콘서트',
     tasks: [],
+    localImage: 'images/projects/2019-jung-dong-ha.jpg',
   },
 
   {
@@ -237,6 +244,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction · Project Management',
     desc: '남북정상회담의 문화적 교류를 상징한 남측예술단 평양 공연',
     tasks: [],
+    localImage: 'images/projects/2018-spring-is-coming.jpg',
     image: 'https://www.korean-culture.org/CONTENTS/editImage/20180402173214530_1.jpg',
   },
 
@@ -259,6 +267,7 @@ const PROJECTS = [
     role: 'Creative Direction · Project Management',
     desc: '인디 뮤지션 발굴을 위한 오디션 프로그램 운영 및 라이브 이벤트 진행',
     tasks: [],
+    localImage: 'images/projects/2017-indistance.jpg',
   },
 
   {
@@ -295,6 +304,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction · Project Management',
     desc: '디지털 음악 콘텐츠를 대형 라이브 무대와 관객 참여로 확장한 첫번째 라이브 이벤트',
     tasks: ['공연 컨셉 개발 및 기획 총괄', '프로그램 및 공연 구성 총괄', '출연진 섭외 및 공연 프로그램 기획', '현장 리허설 및 쇼 플로우 총괄', '운영 계획 및 관계자, 협력사 커뮤니케이션'],
+    localImage: 'images/projects/2024-killing-voice.gif',
     image: 'https://cdnweb01.wikitree.co.kr/webdata/editor/202407/31/202407311513165603.jpg',
   },
 
@@ -328,6 +338,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction · Project Management',
     desc: '아디다스 EQT의 헤리티지를 사운드·AV 퍼포먼스·공간으로 재해석한 브랜드 프로젝트',
     tasks: ['컨셉 개발 및 기획 총괄', '프로그램 및 공연 구성 총괄', '출연진 섭외 및 공연 프로그램 기획', '출연진 및 파트너 커뮤니케이션', '현장 리허설 및 쇼 플로우 총괄', '공간 디자인 및 제작, 설치 총괄', '운영 계획 및 관계자, 협력사 커뮤니케이션', '행사 정산 및 예산 관리'],
+    localImage: 'images/projects/2024-adidas-eqt.png',
   },
 
   {
@@ -349,6 +360,7 @@ const PROJECTS = [
     role: 'Creative Direction · Project Management',
     desc: '강연과 문화 프로그램을 결합해 브랜드와 커뮤니티의 접점을 만든 컬처 프로젝트',
     tasks: ['컨셉 개발 및 기획 총괄', '프로그램 및 구성 총괄', '출연진 섭외 및 프로그램 기획', '출연진 및 파트너 커뮤니케이션', '현장 리허설 및 쇼 플로우 총괄', '공간 디자인 및 제작, 설치 총괄', '운영 계획 및 관계자, 협력사 커뮤니케이션', '행사 정산 및 예산 관리'],
+    localImage: 'images/projects/2024-wanted-offroad.jpg',
     image: 'https://static.wanted.co.kr/events/offroadstation2024/og_image.png',
   },
 
@@ -371,6 +383,7 @@ const PROJECTS = [
     role: 'Creative Direction · Project Management',
     desc: 'Refik Anadol의 미디어아트 작품 오프닝을 기념하는 프리뷰 프로젝트와 VIP 프로그램',
     tasks: ['컨셉 개발 및 기획 총괄', '공연 및 전시 프로그램 구성 총괄', '출연진 및 파트너 커뮤니케이션', '현장 리허설 및 쇼 플로우 총괄', '공간 디자인 및 제작, 설치 총괄', '운영 계획 및 관계자, 협력사 커뮤니케이션', '행사 정산 및 예산 관리'],
+    localImage: 'images/projects/2023-hanwha-lifeplus.jpg',
     image: 'https://www.koreaittimes.com/news/thumbnail/202310/125512_73641_3348_v150.jpg',
   },
 
@@ -392,6 +405,7 @@ const PROJECTS = [
     role: 'Creative Direction · Project Management',
     desc: 'Frieze Seoul 기간 문화·예술 네트워크를 위한 프라이빗 나이트',
     tasks: [],
+    localImage: 'images/projects/2022-cj-night-frieze.png',
     image: 'http://img.tf.co.kr/article/home/2022/09/01/202211141662034358.jpg',
   },
 
@@ -425,6 +439,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction · Project Management',
     desc: '한-아세안 특별정상회의의 문화적 결합을 K-팝 콘서트로 전하는 전야 콘서트',
     tasks: [],
+    localImage: 'images/projects/2019-korea-asean-gala.jpg',
     image: 'https://img5.yna.co.kr/etc/inner/EN/2019/11/14/AEN20191114004600315_01_i_P4.jpg',
   },
 
@@ -436,6 +451,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction, Content Produce',
     desc: '한-아세안 특별정상회의 정산 만찬 기념 공연',
     tasks: [],
+    localImage: 'images/projects/2019-korea-asean-gala.jpg',
   },
 
   {
@@ -446,6 +462,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction',
     desc: '판문점선언 1주년의 의미를 공연과 기념 프로그램으로 전달한 문화행사',
     tasks: [],
+    localImage: 'images/projects/2019-long-road.jpg',
     image: 'https://img.sbs.co.kr/newimg/news/20190427/201307653_1280.jpg',
   },
 
@@ -457,6 +474,7 @@ const PROJECTS = [
     role: 'Creative Direction, Project Management',
     desc: 'iKON 퍼블릭 팬 이벤트(체험, 전시, 퍼포먼스 진행)',
     tasks: [],
+    localImage: 'images/projects/2018-pikonicday.jpg',
     image: 'https://yg-life.com/wp-content/uploads/2018/07/91a66859b84bd72d23d66fe5a4fa0c8f-e1532510188328.jpg',
   },
 
