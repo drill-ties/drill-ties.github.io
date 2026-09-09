@@ -848,9 +848,8 @@ section {
   }
 
   .about-facts {
-    grid-template-columns: minmax(220px, 1.4fr) minmax(360px, 2.2fr) minmax(160px, 0.9fr) minmax(90px, 0.5fr);
-    column-gap: clamp(28px, 4vw, 72px);
-    align-items: start;
+    grid-template-columns: 1fr;
+    max-width: min(720px, 74vw);
   }
 
   .about-facts dd {
@@ -862,14 +861,10 @@ section {
   }
 
   .about-facts > div {
-    padding-bottom: 0;
+    padding: 28px 0;
   }
 
-  .about-facts > div:nth-child(-n + 4) {
+  .about-facts > div:first-child {
     padding-top: 0;
-  }
-
-  .about-facts > div:not(.about-work) dd {
-    white-space: nowrap;
   }
 }
