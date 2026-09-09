@@ -151,6 +151,8 @@
   --header-h: 80px;
   --edge: 24px;
   --content-max: 1760px;
+  --content-width: min(calc(100vw - (var(--edge) * 2)), var(--content-max));
+  --text-max: 1120px;
   --font-inter: "Inter", "Pretendard", "Apple SD Gothic Neo", "Helvetica Neue", Arial, sans-serif;
   --font-space-grotesk: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
   --font-instrument-serif: "Instrument Serif", Georgia, serif;
@@ -189,14 +191,21 @@ section {
   padding: 80px var(--edge);
 }
 
-section > .section-head,
+.section-inner,
+#contact > .section-head {
+  width: var(--content-width);
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .about-content,
 .archive-filters,
 .archive-grid {
   width: 100%;
-  max-width: var(--content-max);
-  margin-left: auto;
-  margin-right: auto;
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
 }
 
 /* ==========================================================================
@@ -374,7 +383,7 @@ section > .section-head,
    About
    ========================================================================== */
 .about-lead {
-  max-width: clamp(480px, 74vw, 1700px);
+  max-width: var(--text-max);
   font-size: clamp(16px, 2.3vw, 40px);
   font-weight: 600;
   line-height: 1.5;
@@ -382,7 +391,7 @@ section > .section-head,
 }
 
 .about-body {
-  max-width: clamp(480px, 74vw, 1700px);
+  max-width: var(--text-max);
   font-size: clamp(15px, 1.5vw, 26px);
   line-height: 1.65;
   color: #333;
@@ -396,11 +405,12 @@ section > .section-head,
   border-top: 1px solid var(--gray-light);
   padding-top: clamp(44px, 5vw, 72px);
   padding-bottom: 0;
+  width: 100%;
 }
 
 .about-facts > div {
   padding: clamp(24px, 3vw, 44px) 0;
-  max-width: 720px;
+  max-width: none;
 }
 
 .about-facts > div:first-child {
