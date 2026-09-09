@@ -126,7 +126,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction',
     desc: '황민현 미니콘서트 서울 공연 및 아시아 투어 연출',
     tasks: ['공연 컨셉 개발 및 구성 총괄', '쇼 플로우 연출 및 현장 리허설 진행', '출연진 및 현지 파트너 커뮤니케이션'],
-    image: 'https://0.soompi.io/wp-content/uploads/2023/06/26014317/hwang-minhyun-concert-1.jpeg',
+    image: 'https://image.toast.com/aaaaab/ticketlink/TKL_1/hwang_pst_0628.jpg',
   },
 
   {
@@ -213,7 +213,7 @@ const PROJECTS = [
     role: 'Operation',
     desc: 'DMZ 철원에서 펼쳐지는 글로벌 뮤직 페스티벌',
     tasks: [],
-    image: 'https://static.wixstatic.com/media/33ab3e_0abc126c7bce48dd935cbf5bfa80ba85~mv2.jpg/v1/fill/w_980,h_713,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/2018%EC%8A%AC%EB%A1%9C%EA%B1%B4.jpg',
+    image: 'https://img.koreatimes.co.kr/upload/newsV2/images/201806/3520dac082db42eb955ff22080657b38.jpg',
   },
 
   {
@@ -269,6 +269,7 @@ const PROJECTS = [
     role: 'Creative Direction · Project Management',
     desc: 'BTS 데뷔 12주년을 기념한 공식 팬 이벤트',
     tasks: ['프로그램 및 공연 구성 총괄', '공간 디자인 및 제작, 설치 총괄', '운영 계획 및 관계자, 협력사 커뮤니케이션', '행사 정산 및 예산 관리'],
+    image: 'https://cf.creatrip.com/occasion/b0630cc20d658pe42deee498e0bd65e93gbj.jpeg',
   },
 
   {
@@ -411,7 +412,7 @@ const PROJECTS = [
     role: 'Creative Planning · Content Producing',
     desc: '기후 의제를 정상회의의 메시지·영상·하이브리드 운영으로 전달한 국제행사 개회식',
     tasks: [],
-    image: 'https://img.khan.co.kr/news/2021/05/30/l_2021053001023373100289621.jpg',
+    image: 'https://www.hanwha.com/content/dam/hanwha/news_and_media/hanwha-insight/hanwha-outlines-path-for-measurable-progress-against-climate-change-at-2021-p4g-seoul-summit/p4g_seoul_summit_1.jpg',
   },
 
   {
@@ -422,7 +423,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction · Project Management',
     desc: '한-아세안 특별정상회의의 문화적 결합을 K-팝 콘서트로 전하는 전야 콘서트',
     tasks: [],
-    image: 'https://cdn.koreatraveleasy.com/wp-content/uploads/2019/11/08191315/banner-asean-conert-2.jpg',
+    image: 'https://img5.yna.co.kr/etc/inner/EN/2019/11/14/AEN20191114004600315_01_i_P4.jpg',
   },
 
   {
@@ -466,6 +467,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction',
     desc: '창원에서 열리는 대한민국 대표 문화다양성 축제',
     tasks: [],
+    image: 'https://philembassy-seoul.com/storage/articles/announcement/2018917_MAMF.jpg',
   },
 
 ];
