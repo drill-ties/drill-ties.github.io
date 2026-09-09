@@ -362,13 +362,8 @@ section {
 /* ==========================================================================
    About
    ========================================================================== */
-.about-lead,
-.about-body,
-.about-facts {
-  max-width: clamp(480px, 74vw, 1700px);
-}
-
 .about-lead {
+  max-width: clamp(480px, 74vw, 1700px);
   font-size: clamp(16px, 2.3vw, 40px);
   font-weight: 600;
   line-height: 1.5;
@@ -376,6 +371,7 @@ section {
 }
 
 .about-body {
+  max-width: clamp(480px, 74vw, 1700px);
   font-size: clamp(15px, 1.5vw, 26px);
   line-height: 1.65;
   color: #333;
@@ -393,6 +389,7 @@ section {
 
 .about-facts > div {
   padding: clamp(24px, 3vw, 44px) 0;
+  max-width: 720px;
 }
 
 .about-facts > div:first-child {
@@ -808,11 +805,6 @@ section {
     column-gap: 32px;
   }
 
-  .about-facts {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    column-gap: 48px;
-  }
-
   .contact-row {
     grid-template-columns: 1fr;
     gap: 14px;
@@ -849,7 +841,7 @@ section {
 
   .about-facts {
     grid-template-columns: 1fr;
-    max-width: min(720px, 74vw);
+    max-width: none;
   }
 
   .about-facts dd {
