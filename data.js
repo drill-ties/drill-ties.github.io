@@ -84,6 +84,7 @@ const PROJECTS = [
     role: 'Creative Direction · Project Management',
     desc: '역사적 기억을 건축 외벽과 미디어 콘텐츠로 확장한 미디어파사드 프로젝트',
     tasks: ['미디어파사드 콘텐츠 컨셉 및 제작 총괄', '현장 리허설 및 이벤트 진행 총괄', '운영 계획 및 관계자, 협력사 커뮤니케이션'],
+    localImage: 'images/projects/2025-december-3-democracy.jpg',
   },
 
   {
@@ -109,6 +110,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction · Project Management',
     desc: '광복 80년의 메시지를 대중음악, 미디어파사드와 드론쇼로 확장한 대규모 국가 기념 문화행사',
     tasks: ['프로그램 및 공연 구성 총괄', '현장 리허설 및 쇼 플로우 총괄', '출연진 및 관계자, 파트너 커뮤니케이션'],
+    localImage: 'images/projects/2025-liberation-80-eve.jpg',
     image: 'https://korea815.go.kr/images/site/kor/sub/event1_img06.jpg',
   },
 
@@ -122,6 +124,7 @@ const PROJECTS = [
     role: 'Creative Planning · Production Support',
     desc: '음악과 무대, 관객을 대형 아레나 스케일로 연결한 공연 프로젝트',
     tasks: ['공연 콘텐츠 기획 및 출연진 섭외'],
+    localImage: 'images/projects/2025-the-powerful.gif',
   },
 
   {
@@ -327,6 +330,7 @@ const PROJECTS = [
     role: 'Creative Direction · Project Management',
     desc: '음악과 무대, 관객을 대형 아레나 스케일로 연결한 공연 프로젝트',
     tasks: ['공연 콘텐츠 기획 및 출연진 섭외'],
+    localImage: 'images/projects/2024-the-beautiful.jpg',
     image: 'https://www.ddanzi.com/./files/attach/images/977701/340/884/804/be987c728fc663b80ad9a087a7a6fe2c.PNG',
   },
 
@@ -349,6 +353,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction · Project Management',
     desc: '아시아 최초 FENDI Casa 하이엔드 레지던스 서울 론칭 기념 VIP 이벤트',
     tasks: ['컨셉 개발 및 기획 총괄', '프로그램 및 공연 구성 총괄', '출연진 섭외 및 공연 프로그램 기획', '출연진 및 파트너 커뮤니케이션', '현장 리허설 및 쇼 플로우 총괄', '공간 디자인 및 제작, 설치 총괄', '운영 계획 및 관계자, 협력사 커뮤니케이션', '행사 정산 및 예산 관리'],
+    localImage: 'images/projects/2024-podo-fendi-casa.jpg',
     image: 'https://cdn.forbeskorea.co.kr/news/photo/202405/20240525_1_339793.jpg',
   },
 
@@ -439,7 +444,6 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction · Project Management',
     desc: '한-아세안 특별정상회의의 문화적 결합을 K-팝 콘서트로 전하는 전야 콘서트',
     tasks: [],
-    localImage: 'images/projects/2019-korea-asean-gala.jpg',
     image: 'https://img5.yna.co.kr/etc/inner/EN/2019/11/14/AEN20191114004600315_01_i_P4.jpg',
   },
 
