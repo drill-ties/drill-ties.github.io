@@ -44,6 +44,7 @@ const PROJECTS = [
     role: 'Show Direction · Creative Direction · Project Management',
     desc: '인도 전역의 K-POP 경연을 결산하는 대규모 챔피언십으로, 현지 팬과 한류 콘텐츠를 연결한 문화교류 프로젝트',
     tasks: ['경연 진행 및 심사, 시상식 연출 총괄', '현지 업체 어레인지 및 커뮤니케이션', '출연자 계약·비자 수속, 의전 등 행사 진행 일체', '행사 정산 및 비용 관리'],
+    image: 'https://m.economictimes.com/thumb/msid-130335829%2Cwidth-1200%2Cheight-1200%2Cresizemode-4%2Cimgsize-97078/img_4833-.jpg',
   },
 
   {
@@ -56,6 +57,7 @@ const PROJECTS = [
     role: 'Creative Direction',
     desc: '일본 각 지역을 대표하는 디저트 브랜드 4곳이 일본 여행의 오미야게 쇼핑 경험을 현지처럼 즐길 수 있도록 기획한 팝업 이벤트',
     tasks: ['팝업 컨셉 및 프로그램 개발', '팝업 공간 디자인 및 운영 계획 수립', '팝업 제작 및 설치, 운영 일체'],
+    image: 'https://pimg.mk.co.kr/news/cms/202601/30/news-p.v1.20260130.693a58896e144a038a31987af0cab238_R.jpg',
   },
 
   {

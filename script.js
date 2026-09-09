@@ -20,7 +20,16 @@ function getDisplayRole(project) {
   const role = String(project.role || '').trim();
   const isShowProject = category.includes('LIVE CONCERT') || category.includes('LIVE EXPERIENCE');
 
-  if (isShowProject && !role.toUpperCase().includes('SHOW DIRECTOR')) {
+  const roleUpper = role.toUpperCase();
+  if (isShowProject && roleUpper.includes('SHOW DIRECTOR')) {
+    return role;
+  }
+
+  if (isShowProject && roleUpper.includes('SHOW DIRECTION')) {
+    return role.replace(/Show Direction/i, 'Show Director');
+  }
+
+  if (isShowProject) {
     return role ? `Show Director · ${role}` : 'Show Director';
   }
 
