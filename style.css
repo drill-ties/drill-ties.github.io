@@ -150,6 +150,7 @@
   --gray-box: #d9d9d9;
   --header-h: 80px;
   --edge: 24px;
+  --content-max: 1760px;
   --font-inter: "Inter", "Pretendard", "Apple SD Gothic Neo", "Helvetica Neue", Arial, sans-serif;
   --font-space-grotesk: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
   --font-instrument-serif: "Instrument Serif", Georgia, serif;
@@ -186,6 +187,16 @@ img {
 
 section {
   padding: 80px var(--edge);
+}
+
+section > .section-head,
+.about-content,
+.archive-filters,
+.archive-grid {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* ==========================================================================
