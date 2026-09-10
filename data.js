@@ -214,6 +214,7 @@ const PROJECTS = [
     role: 'Creative Direction · Project Management',
     desc: '인도네시아 대통령 국빈방한을 위한 공식 환영·만찬 프로그램',
     tasks: [],
+    localImage: 'images/projects/2018-joko-widodo-state-visit.jpg',
     image: 'https://setkab.go.id/wp-content/uploads/2018/09/konpres-1.jpg',
   },
 
@@ -433,6 +434,7 @@ const PROJECTS = [
     role: 'Creative Planning · Content Producing',
     desc: '기후 의제를 정상회의의 메시지·영상·하이브리드 운영으로 전달한 국제행사 개회식',
     tasks: [],
+    localImage: 'images/projects/2021-p4g-opening-ceremony.jpg',
     image: 'https://www.hanwha.com/content/dam/hanwha/news_and_media/hanwha-insight/hanwha-outlines-path-for-measurable-progress-against-climate-change-at-2021-p4g-seoul-summit/p4g_seoul_summit_1.jpg',
   },
 
