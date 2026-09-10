@@ -262,7 +262,7 @@ const PROJECTS = [
     role: 'Creative Direction · Project Management',
     desc: '미국 대통령 국빈방문을 위한 공식 환영·만찬 프로그램',
     tasks: [],
-    localImage: 'images/projects/2017-trump-state-dinner.jpg',
+    localImage: 'images/projects/2017-trump-state-dinner-v2.jpg',
     image: 'https://img1.newsis.com/2017/11/07/NISI20171107_0013541936_web.jpg',
   },
 
