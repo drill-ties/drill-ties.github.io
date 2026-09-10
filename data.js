@@ -203,6 +203,7 @@ const PROJECTS = [
     role: 'Creative Direction',
     desc: '한미 공동감식을 통해 국군 전사자로 판정된 64위의 유해를 모시는 행사',
     tasks: [],
+    localImage: 'images/projects/2018-repatriation-ceremony.jpg',
     image: 'https://www.korean-culture.org/CONTENTS/editImage/20181002174241902_1.jpg',
   },
 
@@ -237,6 +238,7 @@ const PROJECTS = [
     role: 'Creative Direction, Project Management',
     desc: '터키 대통령 국빈방문을 위한 공식 환영·만찬 프로그램',
     tasks: [],
+    localImage: 'images/projects/2018-erdogan-state-dinner.jpg',
     image: 'https://img.khan.co.kr/news/2018/05/02/l_2018050201000258800017491.jpg',
   },
 
@@ -260,6 +262,7 @@ const PROJECTS = [
     role: 'Creative Direction · Project Management',
     desc: '미국 대통령 국빈방문을 위한 공식 환영·만찬 프로그램',
     tasks: [],
+    localImage: 'images/projects/2017-trump-state-dinner.jpg',
     image: 'https://img1.newsis.com/2017/11/07/NISI20171107_0013541936_web.jpg',
   },
 
