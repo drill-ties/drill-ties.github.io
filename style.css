@@ -12,6 +12,20 @@
    ========================================================================== */
 @font-face {
   font-family: "Inter";
+  src: url("fonts/Inter/inter-latin-300-normal.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Pretendard";
+  src: url("fonts/Pretendard/Pretendard-Light.woff2") format("woff2");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
   src: url("fonts/Inter/inter-latin-400-normal.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
@@ -1562,3 +1576,51 @@ html.lang-kr .t-ko { display: inline; }
   unicode-range: U+1100-11FF, U+3130-318F, U+A960-A97F, U+AC00-D7A3, U+D7B0-D7FF;
 }
 .archive-card-title .t-mark { color: #9a9a9a; font-weight: 500; }
+
+/* Hero 슬로건 하단 배치 (2026.11.25) — 로고와 떨어뜨려 SCROLL 바로 위에, 더 가는 글씨 */
+.hero-desc {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(84px, 11vh, 128px);
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: calc(100% - var(--edge) * 2);
+  margin-top: 0;
+  font-size: clamp(14px, 0.6vw + 10.5px, 18px);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.7);
+}
+@media (max-width: 700px) { .hero-desc { width: calc(100% - var(--edge) * 2); } }
+
+/* ==========================================================================
+   Light(300) 굵기 본문 적용 (2026.11.25) — 제목·라벨은 그대로, 읽는 글만 가늘게
+   ========================================================================== */
+.hero-desc { font-weight: 300; color: rgba(255, 255, 255, 0.78); }
+.about-facts dd { font-weight: 300; }
+.about-facts .about-profile dd { font-weight: 800; }
+.about-metrics .metric-value { font-weight: 300; }
+.archive-card-desc { font-weight: 300; color: #222; }
+.place-venue, .place-location { font-weight: 300; }
+.overlay-tasks { font-weight: 300; }
+.contact-value-direct, .site-footer { font-weight: 300; }
+
+/* Featured Projects 마지막 문장 (2026.11.25) — 카드 목록을 닫는 한 줄 */
+.archive-closing {
+  margin-left: var(--num-col);
+  padding-top: clamp(8px, 2vw, 32px);
+  font-size: clamp(22px, 1.9vw + 12px, 44px);
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  word-break: keep-all;
+}
+.archive-closing .accent { font-style: normal; color: var(--accent); font-weight: 400; }
+
+/* Work 줄은 굵게 유지 (2026.11.25) */
+.about-facts .about-work dd { font-weight: 600; }
+
+/* 프로젝트 마무리 문장은 굵게 (2026.11.25) */
+.archive-closing { font-weight: 600; }
+.archive-closing .accent { font-weight: 600; }
