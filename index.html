@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,12 +16,16 @@
 <meta name="twitter:title" content="DRILL TIES">
 <meta name="twitter:description" content="Show &amp; Event Director based in Seoul.">
 <meta name="twitter:image" content="https://drill-ties.github.io/images/og-image.png">
+<script>
+  /* 프로젝트 카드 EN/KR: 저장된 언어를 첫 화면 전에 적용 (깜빡임 방지) */
+  try { if (localStorage.getItem('dt-lang') === 'kr') { document.documentElement.classList.add('lang-kr'); } } catch (e) {}
+</script>
 <link rel="icon" href="images/favicon.png" type="image/png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <!-- General Sans · Satoshi 폰트 (Fontshare 무료 폰트, 링크로 불러옴) -->
 <link rel="preconnect" href="https://api.fontshare.com">
 <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&f[]=satoshi@400,500,700,900&display=swap">
-<link rel="stylesheet" href="style.css?v=20261124-2250">
+<link rel="stylesheet" href="style.css?v=20261124-2345">
 </head>
 <body>
 <!--
@@ -37,6 +41,7 @@
 
   <!-- 1. 풀스크린 메인 비주얼 -->
   <section id="hero" class="hero">
+    <p class="hero-status"><span class="status-dot" aria-hidden="true"></span>ON AIR</p>
     <div class="hero-inner">
       <h1 class="hero-title"><img class="hero-logo" src="images/drillties-logo.png" alt="Drillties" width="1693" height="434"></h1>
     </div>
@@ -53,7 +58,6 @@
         <h2 class="section-title">About</h2>
       </div>
       <div class="about-content">
-        <p class="about-lead">Making live moments from the first idea to the final cue.</p>
         <dl class="about-facts">
           <div class="about-profile">
             <dt>Founder / Director</dt>
@@ -68,8 +72,26 @@
             <dd>From concerts and festivals to official ceremonies, and everything in between.</dd>
           </div>
           <div><dt>Based</dt><dd>Seoul, Korea</dd></div>
-          <div><dt>Since</dt><dd>2011</dd></div>
         </dl>
+
+        <ul class="about-metrics">
+          <li>
+            <span class="metric-label">Since</span>
+            <span class="metric-value">2011</span>
+          </li>
+          <li>
+            <span class="metric-label">Years</span>
+            <span class="metric-value">15<span class="metric-plus">+</span></span>
+          </li>
+          <li>
+            <span class="metric-label">Live Shows</span>
+            <span class="metric-value">100<span class="metric-plus">+</span></span>
+          </li>
+        </ul>
+
+        <p class="about-lead">
+          Making live moments from the first idea to <em class="accent">the final cue.</em>
+        </p>
       </div>
     </div>
   </section>
@@ -88,6 +110,11 @@
         <button class="filter-btn" data-filter="2024" type="button">2024</button>
         <button class="filter-btn" data-filter="2023" type="button">2023</button>
         <button class="filter-btn" data-filter="past" type="button">Past</button>
+        <div class="lang-toggle" role="group" aria-label="Project text language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <span class="lang-divider" aria-hidden="true">/</span>
+          <button type="button" data-lang="kr" aria-pressed="false">KR</button>
+        </div>
       </div>
       <div class="archive-grid" id="archiveGrid">
         <!-- script.js가 프로젝트 카드를 여기에 렌더링합니다 -->
@@ -101,14 +128,13 @@
       <span class="section-num">03</span>
       <h2 class="section-title">Contact</h2>
     </div>
-    <p class="contact-value contact-value-official">
-      <a href="mailto:contact@drill-ties.com">contact@drill-ties.com</a>
-    </p>
-    <div class="contact-direct">
-      <p class="contact-label">Direct Contact</p>
-      <p class="contact-value contact-value-direct">
-        <a href="mailto:yi-seul@drill-ties.com">yi-seul@drill-ties.com</a>
-        <a href="tel:+821040077647">+82 10 4007 7647</a>
+    <div class="contact-mail">
+      <!-- 스팸 방지: 주소를 HTML에 그대로 쓰지 않고 script.js가 조합해서 표시 -->
+      <button type="button" class="contact-copy" data-user="contact" data-domain="drill-ties.com" aria-label="Copy email address">
+        <span class="contact-copy-address">contact [at] drill-ties.com</span>
+      </button>
+      <p class="contact-copy-hint" aria-live="polite">
+        Click to copy
       </p>
     </div>
   </section>
@@ -117,11 +143,13 @@
 
 <button class="back-to-top" type="button" aria-label="맨 위로 이동">Top</button>
 
+<div class="toast" role="status" aria-live="polite"></div>
+
 <footer class="site-footer">
   <p>&copy; <span id="year"></span> DRILL TIES. All rights reserved.</p>
 </footer>
 
-<script src="data.js?v=20261124-2250"></script>
-<script src="script.js?v=20261124-2250"></script>
+<script src="data.js?v=20261124-2345"></script>
+<script src="script.js?v=20261124-2345"></script>
 </body>
 </html>

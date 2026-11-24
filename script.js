@@ -38,56 +38,92 @@ function escapeHtml(value) {
     .replace(/'/g, '&#39;');
 }
 
+/* 역할 → 태그. "Show Direction & Production" → [Show Direction] [Production] */
+const ROLE_TAG_KO = {
+  'Show Direction': '공연 연출',
+  'Production': '제작',
+  'Production Support': '제작 지원',
+  'Creative Direction': '크리에이티브 디렉션',
+  'Project Management': '프로젝트 관리',
+  'Event Management': '행사 운영',
+  'On-site Operations': '현장 운영',
+  'Operations': '운영',
+};
+
+function getRoleTags(project) {
+  const seen = new Set();
+  const tags = [];
+  toPairs(project.role).forEach((r) => {
+    String(r.en || '').split(/\s*&\s*/).forEach((part) => {
+      const en = part.trim();
+      if (!en || seen.has(en)) return;
+      seen.add(en);
+      tags.push({ en, ko: ROLE_TAG_KO[en] || en });
+    });
+  });
+  return tags;
+}
+
+/* 국·영 텍스트 쌍 → 언어별 span (CSS가 현재 언어만 보여줌) */
+function bi(en, ko) {
+  const e = en || ko || '';
+  const k = ko || en || '';
+  return `<span class="t-en">${escapeHtml(e)}</span><span class="t-ko">${escapeHtml(k)}</span>`;
+}
+
 function createArchiveCard(project) {
   const card = document.createElement('article');
   card.className = 'archive-card reveal';
   card.dataset.company = project.company;
   card.dataset.yearBucket = yearBucket(project.year);
 
-  const roles = toPairs(project.role);
   const tasks = toPairs(project.tasks);
-  const roleKo = roles.map((r) => r.ko).filter(Boolean).join(' · ');
+  const tags = getRoleTags(project);
 
-  const roleHtml = roles.length
-    ? `<div class="archive-card-credit">
-        <p class="archive-card-credit-label">Role</p>
-        <div class="archive-card-role">
-          ${roles.map((r) => `<p class="credit-en">${escapeHtml(r.en)}</p>`).join('')}
-          ${roleKo ? `<p class="credit-ko">${escapeHtml(roleKo)}</p>` : ''}
-        </div>
-      </div>`
+  const overlayHtml = tasks.length
+    ? `<div class="archive-card-overlay" aria-hidden="true">
+        <p class="overlay-label">Key Contributions</p>
+        <ul class="overlay-tasks">${tasks.map((t) => `<li>${bi(t.en, t.ko)}</li>`).join('')}</ul>
+      </div>
+      <button type="button" class="archive-card-more" aria-expanded="false" aria-label="Key contributions"><span aria-hidden="true">+</span></button>`
     : '';
 
-  const tasksHtml = tasks.length
-    ? `<div class="archive-card-credit">
-        <p class="archive-card-credit-label">Key Contributions</p>
-        <ul class="archive-card-tasks">
-          ${tasks.map((t) => `<li>
-            ${t.en ? `<span class="credit-en">${escapeHtml(t.en)}</span>` : ''}
-            ${t.ko ? `<span class="credit-ko">${escapeHtml(t.ko)}</span>` : ''}
-          </li>`).join('')}
-        </ul>
-      </div>`
-    : '';
+  const place = [project.venueEn, project.locationEn].filter(Boolean)
+    .map((t, i) => `<span class="${i === 0 && project.venueEn ? 'place-venue' : 'place-location'}">${escapeHtml(t)}</span>`).join('');
 
   card.innerHTML = `
     <div class="archive-card-media">
       <div class="archive-card-image" data-img-slot></div>
       <span class="archive-card-category">${escapeHtml(getDisplayCategory(project))}</span>
+      ${overlayHtml}
     </div>
     <p class="archive-card-yearclient">${escapeHtml(project.displayYear || project.year)} | ${escapeHtml(project.client)}</p>
     <h3 class="archive-card-title">${escapeHtml(project.title)}</h3>
-    <p class="archive-card-venue">${escapeHtml(project.venueEn)}</p>
-    <p class="archive-card-location">${escapeHtml(project.locationEn)}</p>
-    <p class="archive-card-desc">${escapeHtml(project.desc)}</p>
-    <div class="archive-card-credits">
-      ${roleHtml}
-      ${tasksHtml}
-    </div>
+    <p class="archive-card-place">${place}</p>
+    <p class="archive-card-desc">${bi(project.descEn, project.desc)}</p>
+    <ul class="archive-card-tags">${tags.map((t) => `<li>${bi(t.en, t.ko)}</li>`).join('')}</ul>
   `;
 
+  // Key Contributions: 마우스 호버(데스크톱) 또는 + 버튼/이미지 탭(모바일)으로 열고 닫기
+  const media = card.querySelector('.archive-card-media');
+  const moreBtn = card.querySelector('.archive-card-more');
+  if (moreBtn) {
+    const overlay = card.querySelector('.archive-card-overlay');
+    const setOpen = (open) => {
+      media.classList.toggle('is-open', open);
+      moreBtn.setAttribute('aria-expanded', String(open));
+      overlay.setAttribute('aria-hidden', String(!open));
+    };
+    moreBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setOpen(!media.classList.contains('is-open'));
+    });
+    media.addEventListener('click', () => {
+      if (window.matchMedia('(hover: none)').matches) setOpen(!media.classList.contains('is-open'));
+    });
+  }
+
   // 이미지 슬롯 채우기: project.image가 있으면 실제 이미지, 없으면(또는 로드 실패 시) 빈 회색 박스
-  // (회사명 라벨 텍스트는 더 이상 표시하지 않음 — 2026.08.25 요청으로 제거)
   const imgSlot = card.querySelector('[data-img-slot]');
   const imageSrc = project.localImage || project.image;
   if (imageSrc) {
@@ -100,12 +136,83 @@ function createArchiveCard(project) {
       imgSlot.innerHTML = '';
     });
     imgSlot.classList.add('has-image');
+    if (project.imageFit === 'contain') imgSlot.classList.add('is-contain');
     imgSlot.appendChild(img);
   } else {
     imgSlot.innerHTML = '';
   }
 
   return card;
+}
+
+/* ------------------------------------------------------------
+   EN / KR 토글 — 프로젝트 카드 텍스트만 전환 (About·Contact는 영문 고정, 디폴트 EN)
+------------------------------------------------------------ */
+function setupLangToggle() {
+  const root = document.documentElement;
+  const buttons = document.querySelectorAll('.lang-toggle button');
+  const apply = (lang) => {
+    const kr = lang === 'kr';
+    root.classList.toggle('lang-kr', kr);
+    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
+    try { localStorage.setItem('dt-lang', lang); } catch (e) {}
+  };
+  buttons.forEach((b) => b.addEventListener('click', () => apply(b.dataset.lang)));
+  apply(root.classList.contains('lang-kr') ? 'kr' : 'en');
+}
+
+/* ------------------------------------------------------------
+   이메일 원클릭 복사 + 토스트 (주소는 스팸 방지로 JS에서 조합)
+------------------------------------------------------------ */
+function copyText(text) {
+  if (navigator.clipboard && window.isSecureContext) {
+    return navigator.clipboard.writeText(text);
+  }
+  return new Promise((resolve, reject) => {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy') ? resolve() : reject(new Error('copy failed')); }
+    catch (err) { reject(err); }
+    finally { ta.remove(); }
+  });
+}
+
+function showToast(html) {
+  const toast = document.querySelector('.toast');
+  if (!toast) return;
+  toast.textContent = html;
+  toast.classList.add('is-visible');
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => toast.classList.remove('is-visible'), 2200);
+}
+
+function setupEmailCopy() {
+  const btn = document.querySelector('.contact-copy');
+  if (!btn) return;
+  const address = `${btn.dataset.user}@${btn.dataset.domain}`;
+  btn.querySelector('.contact-copy-address').textContent = address;
+  const hint = document.querySelector('.contact-copy-hint');
+  const hintDefault = hint ? hint.innerHTML : '';
+
+  btn.addEventListener('click', () => {
+    copyText(address)
+      .then(() => {
+        btn.classList.add('is-copied');
+        if (hint) hint.textContent = 'Copied!';
+        showToast('Copied! — ' + address);
+        clearTimeout(setupEmailCopy.timer);
+        setupEmailCopy.timer = setTimeout(() => {
+          btn.classList.remove('is-copied');
+          if (hint) hint.innerHTML = hintDefault;
+        }, 2200);
+      })
+      .catch(() => { window.location.href = 'mailto:' + address; });
+  });
 }
 
 /* 연도 그룹 표시 순서 & 라벨 (최신 → 과거) */
@@ -210,6 +317,8 @@ document.addEventListener('DOMContentLoaded', () => {
   ----------------------------------------------------------- */
   renderArchive();
   setupArchiveFilters();
+  setupLangToggle();
+  setupEmailCopy();
 
   /* -----------------------------------------------------------
      긴 페이지 탐색 보조: 맨 위로 이동 버튼
@@ -233,7 +342,7 @@ document.addEventListener('DOMContentLoaded', () => {
      스크롤 등장 효과 (최소한의, 과도하지 않은 연출)
   ----------------------------------------------------------- */
   const revealTargets = document.querySelectorAll(
-    '.about-lead, .about-body, .about-facts, .archive-card, .contact-value-official, .contact-row'
+    '.about-lead, .about-metrics, .about-facts, .archive-card, .contact-mail'
   );
 
   revealTargets.forEach((el) => el.classList.add('reveal'));
