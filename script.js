@@ -156,6 +156,51 @@ function createArchiveCard(project) {
 }
 
 /* ------------------------------------------------------------
+   한 줄 요약: 2줄을 넘어 잘린 카드만 눌러서 펼치기/접기
+------------------------------------------------------------ */
+function markTruncatedDescs() {
+  document.querySelectorAll('.archive-card-desc').forEach((el) => {
+    if (el.classList.contains('is-expanded')) return;
+    const cut = el.scrollHeight > el.clientHeight + 1;
+    el.classList.toggle('is-truncated', cut);
+    if (cut) {
+      el.setAttribute('role', 'button');
+      el.setAttribute('tabindex', '0');
+      el.setAttribute('aria-expanded', 'false');
+    } else {
+      el.removeAttribute('role');
+      el.removeAttribute('tabindex');
+      el.removeAttribute('aria-expanded');
+    }
+  });
+}
+
+function setupDescExpand() {
+  const grid = document.getElementById('archiveGrid');
+  if (!grid) return;
+  const toggle = (el) => {
+    if (!el.classList.contains('is-truncated') && !el.classList.contains('is-expanded')) return;
+    const open = !el.classList.contains('is-expanded');
+    el.classList.toggle('is-expanded', open);
+    el.classList.toggle('is-truncated', !open);
+    el.setAttribute('aria-expanded', String(open));
+    if (!open) markTruncatedDescs();
+  };
+  grid.addEventListener('click', (e) => {
+    const el = e.target.closest('.archive-card-desc');
+    if (el) toggle(el);
+  });
+  grid.addEventListener('keydown', (e) => {
+    const el = e.target.closest('.archive-card-desc');
+    if (el && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); toggle(el); }
+  });
+  let t;
+  window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(markTruncatedDescs, 150); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(markTruncatedDescs);
+  markTruncatedDescs();
+}
+
+/* ------------------------------------------------------------
    EN / KR 토글 — 프로젝트 카드 텍스트만 전환 (About·Contact는 영문 고정, 디폴트 EN)
 ------------------------------------------------------------ */
 function setupLangToggle() {
@@ -166,6 +211,7 @@ function setupLangToggle() {
     root.classList.toggle('lang-kr', kr);
     buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lang === lang)));
     try { localStorage.setItem('dt-lang', lang); } catch (e) {}
+    if (typeof markTruncatedDescs === 'function') markTruncatedDescs();
   };
   buttons.forEach((b) => b.addEventListener('click', () => apply(b.dataset.lang)));
   apply(root.classList.contains('lang-kr') ? 'kr' : 'en');
@@ -328,6 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
   renderArchive();
   setupArchiveFilters();
   setupLangToggle();
+  setupDescExpand();
   setupEmailCopy();
 
   /* -----------------------------------------------------------
