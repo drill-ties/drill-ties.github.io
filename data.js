@@ -151,7 +151,7 @@ const PROJECTS = [
     desc: "역사적 기억을 건축 외벽과 미디어 콘텐츠로 확장한 미디어파사드 프로젝트",
     descEn: "A media façade project projecting historical memory onto architecture.",
     role: [
-      { en: "Project Management", ko: "프로젝트 관리" },
+      { en: "Planning & Direction", ko: "기획 및 연출" },
     ],
     tasks: [
       { en: "Concept & Program Planning", ko: "콘셉트 및 프로그램 기획" },
@@ -194,7 +194,7 @@ const PROJECTS = [
     desc: "광복 80년의 메시지를 대중음악, 미디어파사드와 드론쇼로 확장한 대규모 국가 기념 문화행사",
     descEn: "A national celebration of Liberation's 80th anniversary through music, media façade and drones.",
     role: [
-      { en: "Show Direction & Production", ko: "공연 연출 및 제작" },
+      { en: "Planning & Show Direction", ko: "기획 및 공연 연출" },
     ],
     tasks: [
       { en: "Program Planning & Show Direction", ko: "프로그램 기획 및 공연 연출" },
@@ -276,7 +276,7 @@ const PROJECTS = [
   },
 
   {
-    company: "NBNDR", year: 2024, displayYear: "2023-2024",
+    company: "DRILLTIES", year: 2024, displayYear: "2023-2024",
     title: "BAEKHO MINI CONCERT 〈BAEKHoney DAY〉",
     client: "PLEDIS Entertainment · HYBE",
     category: "Live Concert",
@@ -424,7 +424,7 @@ const PROJECTS = [
   },
 
   {
-    company: "NBNDR", year: 2023,
+    company: "DRILLTIES", year: 2023,
     title: "HWANG MIN HYUN MINI CONCERT 〈UNVEIL〉",
     client: "PLEDIS Entertainment · HYBE",
     category: "Live Concert",
