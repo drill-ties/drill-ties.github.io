@@ -110,11 +110,11 @@ function createArchiveCard(project) {
       <span class="archive-card-category">${escapeHtml(getDisplayCategory(project))}</span>
       ${overlayHtml}
     </div>
+    <ul class="archive-card-tags">${tags.map((t) => `<li>${bi(t.en, t.ko)}</li>`).join('')}</ul>
     <h3 class="archive-card-title">${formatTitle(project.title)}</h3>
     <p class="archive-card-place">${region}</p>
     <p class="archive-card-desc">${bi(project.descEn, project.desc)}</p>
     <dl class="archive-card-info">${infoRows.join('')}</dl>
-    <ul class="archive-card-tags">${tags.map((t) => `<li>${bi(t.en, t.ko)}</li>`).join('')}</ul>
   `;
 
   // Key Contributions: 마우스 호버(데스크톱) 또는 + 버튼/이미지 탭(모바일)으로 열고 닫기

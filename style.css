@@ -1900,3 +1900,33 @@ html.lang-kr .t-ko { display: inline; }
 
 /* CLIENT를 PLACE·DATE 위로 이동 → 카드 7칸 → 6칸 (2026.11.25) */
 .archive-card { grid-row: span 6; }
+
+/* 역할 태그를 제목 위로 (2026.11.25) */
+.archive-card-tags { margin: 0 0 14px; align-self: start; }
+.archive-card-info { margin-bottom: 0; }
+
+/* 역할 태그: 네온 라인 2px + 검정 글씨, 글로우 없음 (2026.11.25) */
+.archive-card-tags li {
+  background: #fff;
+  color: var(--black);
+  border: 2px solid var(--neon);
+  box-shadow: none;
+}
+
+/* 태그 글씨 600 (2026.11.25) */
+.archive-card-tags li { font-weight: 600; }
+
+/* Contact: 이메일을 제목 아래로, 다른 섹션처럼 제목 글자 시작선에 왼쪽 정렬 (2026.11.25) */
+.contact { display: block; }
+#contact > .section-head {
+  width: var(--content-width);
+  margin: 0 auto clamp(40px, 5vw, 72px);
+  align-self: auto;
+}
+.contact-mail {
+  width: var(--content-width);
+  margin: 0 auto;
+  padding-left: var(--num-col);
+  grid-column: auto;
+  grid-row: auto;
+}
