@@ -1827,3 +1827,15 @@ html.lang-kr .t-ko { display: inline; }
   grid-column: auto;
   grid-row: auto;
 }
+
+/* 이메일: 드래그 선택 가능 (2026.11.25) */
+.contact-copy { -webkit-user-select: text; user-select: text; }
+.contact-copy:focus-visible { outline: 2px solid var(--neon); outline-offset: 3px; }
+
+/* Contact ↔ 엔딩 슬로건 위계 분리 (2026.11.25)
+   이메일 아래 넉넉한 여백 + 얇은 구분선, 슬로건은 독립된 커튼콜 블록 */
+.contact { padding-bottom: clamp(120px, 12vw, 200px); }
+.closing {
+  padding-top: clamp(140px, 16vw, 280px);
+  padding-bottom: clamp(140px, 16vw, 280px);
+}

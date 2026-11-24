@@ -251,11 +251,12 @@ function setupEmailCopy() {
   const btn = document.querySelector('.contact-copy');
   if (!btn) return;
   const address = `${btn.dataset.user}@${btn.dataset.domain}`;
-  btn.querySelector('.contact-copy-address').textContent = address;
+  const label = btn.querySelector('.contact-copy-address');
+  if (label) label.textContent = address;   // 화면에는 실제 주소(@)로 표시
   const hint = document.querySelector('.contact-copy-hint');
   const hintDefault = hint ? hint.innerHTML : '';
 
-  btn.addEventListener('click', () => {
+  const doCopy = () => {
     copyText(address)
       .then(() => {
         btn.classList.add('is-copied');
@@ -268,6 +269,24 @@ function setupEmailCopy() {
         }, 2200);
       })
       .catch(() => { window.location.href = 'mailto:' + address; });
+  };
+
+  btn.addEventListener('click', () => {
+    // 사용자가 드래그로 일부를 선택한 경우엔 클릭 복사를 건너뛰고 선택을 존중
+    const sel = window.getSelection && window.getSelection();
+    if (sel && !sel.isCollapsed && btn.contains(sel.anchorNode)) return;
+    doCopy();
+  });
+  btn.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); doCopy(); }
+  });
+
+  // 안전장치: 페이지 어디서든 복사되는 텍스트에 "[at]"/"(at)"이 있으면 "@"로 바꿔 클립보드에 넣음
+  document.addEventListener('copy', (e) => {
+    const sel = window.getSelection ? String(window.getSelection()) : '';
+    if (!/\s*[\[\(]\s*at\s*[\]\)]\s*/i.test(sel) || !e.clipboardData) return;
+    e.clipboardData.setData('text/plain', sel.replace(/\s*[\[\(]\s*at\s*[\]\)]\s*/gi, '@'));
+    e.preventDefault();
   });
 }
 
