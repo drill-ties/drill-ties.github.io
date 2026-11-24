@@ -272,17 +272,23 @@ function setupEmailCopy() {
           if (hint) hint.innerHTML = hintDefault;
         }, 2200);
       })
-      .catch(() => { window.location.href = 'mailto:' + address; });
+      .catch(() => {});
   };
 
+  // 클릭 = 메일 작성 화면 열기 (메일 앱이 없는 경우를 대비해 주소도 함께 복사)
+  const openMail = () => {
+    doCopy();
+    window.location.href = 'mailto:' + address;
+  };
+  btn.setAttribute('aria-label', 'Send email to ' + address);
   btn.addEventListener('click', () => {
-    // 사용자가 드래그로 일부를 선택한 경우엔 클릭 복사를 건너뛰고 선택을 존중
+    // 사용자가 드래그로 일부를 선택한 경우엔 건너뛰고 선택을 존중
     const sel = window.getSelection && window.getSelection();
     if (sel && !sel.isCollapsed && btn.contains(sel.anchorNode)) return;
-    doCopy();
+    openMail();
   });
   btn.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); doCopy(); }
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openMail(); }
   });
 
   // 안전장치: 페이지 어디서든 복사되는 텍스트에 "[at]"/"(at)"이 있으면 "@"로 바꿔 클립보드에 넣음

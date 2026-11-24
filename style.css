@@ -1941,3 +1941,9 @@ html.lang-kr .t-ko { display: inline; }
   color: #8a8a8a;
 }
 .archive-footnote { margin-top: calc(56px - clamp(88px, 9vw, 150px)); }
+
+/* 직함 줄바꿈은 가운뎃점 뒤에서만 (2026.11.25) */
+.nw { white-space: nowrap; }
+
+/* 이메일 클릭 = 메일 작성 (2026.11.25) */
+.contact-copy { cursor: pointer; }
