@@ -925,18 +925,18 @@ html {
 .site-footer       { font-size: clamp(12px, 0.1vw + 11.5px, 13px); }
 
 /* ---- 프로젝트 카드 (카드 너비 기준) ---- */
-.archive-card { container-type: inline-size; }
+/* 카드 폭 기준 글씨: 그리드를 컨테이너로 두고 열 수로 나눠 카드 폭을 계산 (카드 자체에 걸면 subgrid가 꺼짐) */
 
-.archive-card-category     { font-size: clamp(11.5px, 3.4cqi, 13.5px); }
-.archive-card-yearclient   { font-size: clamp(12px, 3.5cqi, 14px); }
-.archive-card-title        { font-size: clamp(20px, 6.6cqi, 27px); }
+.archive-card-category     { font-size: clamp(11.5px, calc(var(--cw) * 3.4 / 100), 13.5px); }
+.archive-card-yearclient   { font-size: clamp(12px, calc(var(--cw) * 3.5 / 100), 14px); }
+.archive-card-title        { font-size: clamp(20px, calc(var(--cw) * 6.6 / 100), 27px); }
 .archive-card-venue,
-.archive-card-location     { font-size: clamp(12.5px, 3.6cqi, 14.5px); }
-.archive-card-desc         { font-size: clamp(15px, 4.4cqi, 17.5px); }
+.archive-card-location     { font-size: clamp(12.5px, calc(var(--cw) * 3.6 / 100), 14.5px); }
+.archive-card-desc         { font-size: clamp(15px, calc(var(--cw) * 4.4 / 100), 17.5px); }
 .archive-card-role-label,
-.archive-card-contrib-label { font-size: clamp(11px, 3.2cqi, 12.5px); }
-.archive-card-role-value   { font-size: clamp(14px, 4cqi, 16px); }
-.archive-card-tasks        { font-size: clamp(13px, 3.8cqi, 15px); line-height: 1.55; }
+.archive-card-contrib-label { font-size: clamp(11px, calc(var(--cw) * 3.2 / 100), 12.5px); }
+.archive-card-role-value   { font-size: clamp(14px, calc(var(--cw) * 4 / 100), 16px); }
+.archive-card-tasks        { font-size: clamp(13px, calc(var(--cw) * 3.8 / 100), 15px); line-height: 1.55; }
 
 /* ---- About 섹션 (2026.11.17) ----
    노트북 화면(1000~1440px)에서 본문·라벨이 최소값(15px)에 머물러
@@ -974,7 +974,7 @@ html {
 }
 
 .archive-card-credit-label {
-  font-size: clamp(10.5px, 3cqi, 12px);
+  font-size: clamp(10.5px, calc(var(--cw) * 3 / 100), 12px);
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -984,7 +984,7 @@ html {
 
 .credit-en {
   display: block;
-  font-size: clamp(13.5px, 3.9cqi, 15.5px);
+  font-size: clamp(13.5px, calc(var(--cw) * 3.9 / 100), 15.5px);
   font-weight: 600;
   line-height: 1.4;
   color: #1a1a1a;
@@ -992,7 +992,7 @@ html {
 
 .credit-ko {
   display: block;
-  font-size: clamp(12.5px, 3.5cqi, 14px);
+  font-size: clamp(12.5px, calc(var(--cw) * 3.5 / 100), 14px);
   line-height: 1.5;
   color: #8a8a8a;
   word-break: keep-all;
@@ -1025,3 +1025,100 @@ html {
 
 .archive-card-tasks .credit-en { font-weight: 500; }
 .archive-card-tasks .credit-ko { margin-top: 1px; }
+
+/* ==========================================================================
+   카드 줄맞춤 (2026.11.24)
+   같은 줄 카드끼리 제목·장소·설명·ROLE 시작 높이를 맞춤 (CSS subgrid).
+   카드 하나 = 그리드 7칸(이미지/연도·클라이언트/제목/장소/지역/설명/크레딧).
+   카드 사이 세로 간격은 row-gap 대신 카드 아래 여백으로 줌.
+   ========================================================================== */
+.archive-grid { row-gap: 0; }
+
+.archive-card {
+  display: grid;
+  grid-row: span 7;
+  grid-template-rows: subgrid;
+  row-gap: 0;
+  align-content: start;
+  padding-bottom: clamp(88px, 9vw, 150px);
+}
+
+.archive-year-heading {
+  margin-bottom: clamp(28px, 3vw, 44px);
+  padding-top: 0;
+}
+
+.archive-card-venue:empty,
+.archive-card-location:empty,
+.archive-card-desc:empty { min-height: 0; }
+
+/* ==========================================================================
+   Contact 배치 (2026.11.24)
+   데스크톱: 왼쪽 "03 Contact" ↔ 오른쪽 대표 이메일 아래 기준선 맞춤,
+   Direct Contact(라벨·이메일·전화)는 Contact 제목 아래에 작게.
+   ========================================================================== */
+.contact .section-head { margin-bottom: clamp(20px, 3vw, 32px); }
+
+.contact-direct {
+  margin-top: clamp(40px, 5vw, 56px);
+  display: grid;
+  gap: 10px;
+}
+
+.contact-direct .contact-label {
+  font-size: clamp(11px, 0.2vw + 10px, 12.5px);
+  letter-spacing: 0.14em;
+}
+
+.contact-value-direct {
+  gap: 2px;
+  font-size: clamp(15px, 0.35vw + 13.5px, 18px);
+  line-height: 1.6;
+}
+
+.contact-value-direct a + a { color: var(--gray); }
+.contact-value-direct a + a:hover { color: var(--white); }
+
+@media (min-width: 901px) {
+  .contact {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(18px, 2vw, 32px);
+    align-items: start;
+  }
+
+  #contact > .section-head {
+    grid-column: 1 / 5;
+    grid-row: 1;
+    width: auto;
+    margin: 0;
+    align-self: end;
+    align-self: last baseline;
+  }
+
+  .contact-value-official {
+    grid-column: 5 / -1;
+    grid-row: 1;
+    align-self: end;
+    align-self: last baseline;
+  }
+
+  .contact-direct {
+    grid-column: 1 / 5;
+    grid-row: 2;
+    margin-top: clamp(36px, 3.5vw, 56px);
+  }
+}
+
+
+/* 카드 폭 계산용 변수 (2026.11.24) */
+.archive-grid { container-type: inline-size; --cols: 1; }
+.archive-card { --cw: calc((100cqi - (var(--cols) - 1) * 3.8vw) / var(--cols)); }
+@media (min-width: 701px)  { .archive-grid { --cols: 2; } }
+@media (min-width: 901px)  { .archive-grid { --cols: 3; } }
+@media (min-width: 1500px) { .archive-grid { --cols: 4; } }
+.archive-card-credits { align-content: start; }
+.archive-card-title { word-break: keep-all; }
+
+/* About 소개: 영문 한 줄만 (2026.11.24) — 국문 문단 삭제에 맞춰 아래 여백 복원 */
+.about-lead { margin-bottom: clamp(44px, 5vw, 72px); }

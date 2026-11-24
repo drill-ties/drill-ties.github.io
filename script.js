@@ -77,9 +77,9 @@ function createArchiveCard(project) {
     </div>
     <p class="archive-card-yearclient">${escapeHtml(project.displayYear || project.year)} | ${escapeHtml(project.client)}</p>
     <h3 class="archive-card-title">${escapeHtml(project.title)}</h3>
-    ${project.venueEn ? `<p class="archive-card-venue">${escapeHtml(project.venueEn)}</p>` : ''}
-    ${project.locationEn ? `<p class="archive-card-location">${escapeHtml(project.locationEn)}</p>` : ''}
-    ${project.desc ? `<p class="archive-card-desc">${escapeHtml(project.desc)}</p>` : ''}
+    <p class="archive-card-venue">${escapeHtml(project.venueEn)}</p>
+    <p class="archive-card-location">${escapeHtml(project.locationEn)}</p>
+    <p class="archive-card-desc">${escapeHtml(project.desc)}</p>
     <div class="archive-card-credits">
       ${roleHtml}
       ${tasksHtml}
