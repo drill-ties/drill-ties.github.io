@@ -1273,7 +1273,7 @@ html.lang-kr .t-ko { display: inline; }
 .metric-plus { color: var(--gray); font-weight: 600; margin-left: 0.02em; }
 
 /* ---- Featured Projects 카드: 태그 + 한 줄 요약, 상세는 오버레이 ---- */
-.archive-card { grid-row: span 6; }
+.archive-card { grid-row: span 7; }
 
 .archive-card-place {
   display: flex;
@@ -1839,3 +1839,64 @@ html.lang-kr .t-ko { display: inline; }
   padding-top: clamp(140px, 16vw, 280px);
   padding-bottom: clamp(140px, 16vw, 280px);
 }
+
+/* 카드 정보 재배치 (2026.11.25)
+   제목 아래 = 지역만 / 요약 아래 = Place · Date 두 줄 (라벨 + 값) */
+.archive-card-info {
+  margin: 0 0 18px;
+  display: grid;
+  gap: 4px;
+  align-content: start;
+  font-family: var(--font-mono);
+  font-size: clamp(12px, calc(var(--cw) * 3.4 / 100), 13.5px);
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+.archive-card-info:empty { margin: 0; }
+.archive-card-info > div {
+  display: grid;
+  grid-template-columns: 4.2em minmax(0, 1fr);
+  column-gap: 0.6em;
+}
+.archive-card-info dt {
+  color: #9a9a9a;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.86em;
+  line-height: 1.75;
+}
+.archive-card-info dd { margin: 0; color: #444; font-weight: 400; }
+
+/* 제목 위: 연도 삭제(연도 그룹으로 이미 구분) → CLIENT 라벨 + 주최·주관사 (2026.11.25) */
+.archive-card-yearclient {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 0.8em;
+  align-items: baseline;
+}
+.archive-card-yearclient .yc-label {
+  color: #9a9a9a;
+  font-size: 0.86em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* CLIENT · PLACE · DATE 라벨 배경 (2026.11.25) */
+.archive-card-yearclient .yc-label,
+.archive-card-info dt {
+  display: inline-block;
+  justify-self: start;
+  align-self: start;
+  background: #ededed;
+  color: #555;
+  padding: 0.18em 0.5em;
+  border-radius: 2px;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+.archive-card-info > div { grid-template-columns: 5.4em minmax(0, 1fr); align-items: baseline; }
+.archive-card-info { gap: 6px; }
+
+/* CLIENT를 PLACE·DATE 위로 이동 → 카드 7칸 → 6칸 (2026.11.25) */
+.archive-card { grid-row: span 6; }

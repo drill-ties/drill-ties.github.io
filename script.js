@@ -97,8 +97,12 @@ function createArchiveCard(project) {
       <button type="button" class="archive-card-more" aria-expanded="false" aria-label="Key contributions"><span aria-hidden="true">+</span></button>`
     : '';
 
-  const place = [project.venueEn, project.locationEn].filter(Boolean)
-    .map((t, i) => `<span class="${i === 0 && project.venueEn ? 'place-venue' : 'place-location'}">${escapeHtml(t)}</span>`).join('');
+  // 제목 아래: 지역만 / 요약 아래: Place(행사장) · Date
+  const region = project.locationEn ? `<span class="place-location">${escapeHtml(project.locationEn)}</span>` : '';
+  const infoRows = [];
+  if (project.client) infoRows.push(`<div><dt>Client</dt><dd>${escapeHtml(project.client)}</dd></div>`);
+  if (project.venueEn) infoRows.push(`<div><dt>Place</dt><dd>${escapeHtml(project.venueEn)}</dd></div>`);
+  if (project.date) infoRows.push(`<div><dt>Date</dt><dd>${bi(project.dateEn, project.date)}</dd></div>`);
 
   card.innerHTML = `
     <div class="archive-card-media">
@@ -106,10 +110,10 @@ function createArchiveCard(project) {
       <span class="archive-card-category">${escapeHtml(getDisplayCategory(project))}</span>
       ${overlayHtml}
     </div>
-    <p class="archive-card-yearclient">${escapeHtml(project.displayYear || project.year)} | ${escapeHtml(project.client)}</p>
     <h3 class="archive-card-title">${formatTitle(project.title)}</h3>
-    <p class="archive-card-place">${place}</p>
+    <p class="archive-card-place">${region}</p>
     <p class="archive-card-desc">${bi(project.descEn, project.desc)}</p>
+    <dl class="archive-card-info">${infoRows.join('')}</dl>
     <ul class="archive-card-tags">${tags.map((t) => `<li>${bi(t.en, t.ko)}</li>`).join('')}</ul>
   `;
 
