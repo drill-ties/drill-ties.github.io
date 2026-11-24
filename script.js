@@ -110,7 +110,7 @@ function createArchiveCard(project) {
       <span class="archive-card-category">${escapeHtml(getDisplayCategory(project))}</span>
       ${overlayHtml}
     </div>
-    <ul class="archive-card-tags">${tags.map((t) => `<li>${bi(t.en, t.ko)}</li>`).join('')}</ul>
+    <ul class="archive-card-tags">${tags.map((t) => `<li>${escapeHtml(t.en || t.ko)}</li>`).join('')}</ul>
     <h3 class="archive-card-title">${formatTitle(project.title)}</h3>
     <p class="archive-card-place">${region}</p>
     <p class="archive-card-desc">${bi(project.descEn, project.desc)}</p>

@@ -1930,3 +1930,14 @@ html.lang-kr .t-ko { display: inline; }
   grid-column: auto;
   grid-row: auto;
 }
+
+/* Projects 각주 (2026.11.25) */
+.archive-footnote {
+  margin: 0 0 0 var(--num-col);
+  font-family: var(--font-mono);
+  font-size: clamp(12px, 0.2vw + 11px, 13px);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: #8a8a8a;
+}
+.archive-footnote { margin-top: calc(56px - clamp(88px, 9vw, 150px)); }
