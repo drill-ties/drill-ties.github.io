@@ -71,6 +71,15 @@ function bi(en, ko) {
   return `<span class="t-en">${escapeHtml(e)}</span><span class="t-ko">${escapeHtml(k)}</span>`;
 }
 
+/* 제목 표시: 〈 〉, < > 를 폭이 좁은 ‹ › 로 바꿔 영문 사이에서도 덜 벌어지게 (data.js 원문은 그대로) */
+function formatTitle(title) {
+  return escapeHtml(title)
+    .replace(/\s*(〈|&lt;)\s*/g, ' <span class="t-mark">‹</span>')
+    .replace(/\s*(〉|&gt;)\s*/g, '<span class="t-mark">›</span> ')
+    .replace(/^\s+|\s+$/g, '')
+    .replace(/\s{2,}/g, ' ');
+}
+
 function createArchiveCard(project) {
   const card = document.createElement('article');
   card.className = 'archive-card reveal';
@@ -98,7 +107,7 @@ function createArchiveCard(project) {
       ${overlayHtml}
     </div>
     <p class="archive-card-yearclient">${escapeHtml(project.displayYear || project.year)} | ${escapeHtml(project.client)}</p>
-    <h3 class="archive-card-title">${escapeHtml(project.title)}</h3>
+    <h3 class="archive-card-title">${formatTitle(project.title)}</h3>
     <p class="archive-card-place">${place}</p>
     <p class="archive-card-desc">${bi(project.descEn, project.desc)}</p>
     <ul class="archive-card-tags">${tags.map((t) => `<li>${bi(t.en, t.ko)}</li>`).join('')}</ul>
@@ -137,6 +146,7 @@ function createArchiveCard(project) {
     });
     imgSlot.classList.add('has-image');
     if (project.imageFit === 'contain') imgSlot.classList.add('is-contain');
+    if (project.imagePosition) img.style.objectPosition = project.imagePosition;
     imgSlot.appendChild(img);
   } else {
     imgSlot.innerHTML = '';

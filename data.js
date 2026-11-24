@@ -181,6 +181,7 @@ const PROJECTS = [
     date: "2025.10.31~11.01",
     production: "ezPMP",
     image: "https://jinju.museum.go.kr/_prog/download/?func_gbn_cd=popup_zone&mng_no=411",
+    localImage: "images/projects/2025-apec-welcome.jpg",
   },
 
   {
@@ -604,6 +605,7 @@ const PROJECTS = [
       { en: "Production Management & On-site Operations", ko: "제작 및 현장 운영 총괄" },
     ],
     localImage: "images/projects/2019-akmu-v2.jpg",
+    imagePosition: "left center", // 무대(왼쪽)가 보이도록 왼쪽 붙임
   },
 
   {

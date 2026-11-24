@@ -156,7 +156,7 @@
   --font-inter: "Inter", "Pretendard", "Apple SD Gothic Neo", "Helvetica Neue", Arial, sans-serif;
   --font-space-grotesk: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
   --font-instrument-serif: "Instrument Serif", Georgia, serif;
-  --font-general-sans: "General Sans", "Pretendard", "Apple SD Gothic Neo", "Helvetica Neue", Arial, sans-serif;
+  --font-general-sans: "General Sans", "Pretendard Title", "Pretendard", "Apple SD Gothic Neo", "Helvetica Neue", Arial, sans-serif;
   --font-satoshi: "Satoshi", "Helvetica Neue", Arial, sans-serif;
   --font-pretendard: "Pretendard", "Apple SD Gothic Neo", "Helvetica Neue", Arial, sans-serif;
 }
@@ -1484,3 +1484,81 @@ html.lang-kr .t-ko { display: inline; }
 .archive-card-image.has-image.is-contain,
 .archive-card-image.has-image.is-contain img { background: var(--black); }
 .archive-card-image.has-image.is-contain img { object-fit: contain; }
+
+/* ==========================================================================
+   About: 제목 아래로 바로 이어지는 세로 배치 (구분선 없음, 2026.11.24)
+   ========================================================================== */
+.about-facts {
+  border-top: 0;
+  padding-top: 0;
+}
+.about .section-head { margin-bottom: clamp(40px, 5vw, 72px); }
+
+.about-facts dd { text-wrap: balance; }
+
+/* Contact 이메일 별색 (2026.11.24) — 안내 문구 없이 주소 자체를 포인트로, 복사되면 잠깐 흰색 */
+.contact-copy { color: var(--white); text-shadow: none; transition: color 0.2s ease, text-shadow 0.3s ease, background-size 0.35s ease; }
+.contact-copy.is-copied {
+  color: #39ff14; /* 복사되면 네온 그린 */
+  text-shadow: 0 0 18px rgba(57, 255, 20, 0.45), 0 0 2px rgba(57, 255, 20, 0.6);
+}
+
+/* Hero 태그라인 (2026.11.24) — 로고 아래, 로고 폭에 맞춘 한 줄 */
+.hero-inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.hero-desc {
+  margin-top: clamp(20px, 2.4vw, 36px);
+  max-width: 22em;
+  font-size: clamp(15px, 0.9vw + 11px, 22px);
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  color: rgba(255, 255, 255, 0.82);
+  text-wrap: balance;
+}
+.hero-desc .accent { font-style: normal; color: var(--on-air); }
+@media (min-width: 701px) { .hero-desc { max-width: none; white-space: nowrap; } }
+
+/* About · Featured Projects 내용을 섹션 제목 글자 시작선에 맞춤 (2026.11.24)
+   번호(01, 02) 칸 폭을 고정하고, 같은 폭만큼 아래 내용을 들여씀 */
+:root { --num-col: clamp(30px, 2.5vw, 40px); }
+.about .section-head,
+.archive .section-head { gap: 0; }
+.about .section-num,
+.archive .section-num { flex: 0 0 var(--num-col); }
+.about-content { padding-left: var(--num-col); }
+.archive-filters,
+.archive-grid {
+  width: auto;
+  margin-left: var(--num-col);
+}
+
+
+/* ==========================================================================
+   제목용 한글 (2026.11.24) — General Sans 제목 안의 한글만 한 단계 가볍고
+   살짝 작게 써서 영문과 무게감을 맞춤. 한글 글자에만 적용(unicode-range).
+   ========================================================================== */
+@font-face {
+  font-family: "Pretendard Title";
+  src: url("fonts/Pretendard/Pretendard-Medium.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+  size-adjust: 96%;
+  unicode-range: U+1100-11FF, U+3130-318F, U+A960-A97F, U+AC00-D7A3, U+D7B0-D7FF;
+}
+@font-face {
+  font-family: "Pretendard Title";
+  src: url("fonts/Pretendard/Pretendard-SemiBold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+  size-adjust: 96%;
+  unicode-range: U+1100-11FF, U+3130-318F, U+A960-A97F, U+AC00-D7A3, U+D7B0-D7FF;
+}
+@font-face {
+  font-family: "Pretendard Title";
+  src: url("fonts/Pretendard/Pretendard-Bold.woff2") format("woff2");
+  font-weight: 800;
+  font-display: swap;
+  size-adjust: 96%;
+  unicode-range: U+1100-11FF, U+3130-318F, U+A960-A97F, U+AC00-D7A3, U+D7B0-D7FF;
+}
+.archive-card-title .t-mark { color: #9a9a9a; font-weight: 500; }
