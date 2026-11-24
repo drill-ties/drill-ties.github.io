@@ -15,43 +15,18 @@ function yearBucket(year) {
   return 'past';
 }
 
-function getDisplayRole(project) {
-  const category = String(project.category || '').toUpperCase();
-  const role = String(project.role || '').trim();
-  const isShowProject = category.includes('LIVE CONCERT') || category.includes('LIVE EXPERIENCE');
-
-  const roleUpper = role.toUpperCase();
-  if (isShowProject && roleUpper.includes('SHOW DIRECTOR')) {
-    return role;
-  }
-
-  if (isShowProject && roleUpper.includes('SHOW DIRECTION')) {
-    return role.replace(/Show Direction/i, 'Show Director');
-  }
-
-  if (isShowProject) {
-    return role ? `Show Director · ${role}` : 'Show Director';
-  }
-
-  return role;
+/* 카테고리는 data.js에 적힌 그대로 표시 (공백만 정리, 대문자는 CSS가 처리) */
+function getDisplayCategory(project) {
+  return String(project.category || '').replace(/\s+/g, ' ').trim();
 }
 
-function getDisplayCategory(project) {
-  const category = String(project.category || '').toUpperCase();
-
-  if (category.includes('LIVE CONCERT')) return 'LIVE CONCERT';
-  if (category.includes('LIVE EVENT')) return 'LIVE EXPERIENCE';
-  if (category.includes('LIVE EXPERIENCE')) return 'LIVE EXPERIENCE';
-  if (category.includes('OFFICIAL CEREMONY')) return 'OFFICIAL CEREMONY';
-  if (category.includes('BRAND EXPERIENCE')) return 'BRAND EXPERIENCE';
-  if (category.includes('POP-UP')) return 'POP-UP';
-  if (category.includes('VIP EVENT')) return 'VIP EVENT';
-  if (category.includes('FESTIVAL')) return 'FESTIVAL';
-  if (category.includes('CAMPAIGN')) return 'CAMPAIGN';
-  if (category.includes('BRAND DEVELOPMENT')) return 'BRAND DEVELOPMENT';
-  if (category.includes('MEMORIAL')) return 'MEMORIAL';
-
-  return project.category;
+/* role/tasks: { en, ko } 짝 배열. 예전 형식(문자열)이 섞여 있어도 깨지지 않게 처리 */
+function toPairs(value) {
+  if (!value) return [];
+  const list = Array.isArray(value) ? value : [value];
+  return list
+    .map((item) => (typeof item === 'string' ? { en: item, ko: '' } : item))
+    .filter((item) => item && (item.en || item.ko));
 }
 
 function escapeHtml(value) {
@@ -69,10 +44,29 @@ function createArchiveCard(project) {
   card.dataset.company = project.company;
   card.dataset.yearBucket = yearBucket(project.year);
 
-  const tasksHtml = project.tasks && project.tasks.length
-    ? `<div class="archive-card-contrib">
-        <p class="archive-card-contrib-label">Key Contributions</p>
-        <ul class="archive-card-tasks">${project.tasks.map((t) => `<li>${escapeHtml(t)}</li>`).join('')}</ul>
+  const roles = toPairs(project.role);
+  const tasks = toPairs(project.tasks);
+  const roleKo = roles.map((r) => r.ko).filter(Boolean).join(' · ');
+
+  const roleHtml = roles.length
+    ? `<div class="archive-card-credit">
+        <p class="archive-card-credit-label">Role</p>
+        <div class="archive-card-role">
+          ${roles.map((r) => `<p class="credit-en">${escapeHtml(r.en)}</p>`).join('')}
+          ${roleKo ? `<p class="credit-ko">${escapeHtml(roleKo)}</p>` : ''}
+        </div>
+      </div>`
+    : '';
+
+  const tasksHtml = tasks.length
+    ? `<div class="archive-card-credit">
+        <p class="archive-card-credit-label">Key Contributions</p>
+        <ul class="archive-card-tasks">
+          ${tasks.map((t) => `<li>
+            ${t.en ? `<span class="credit-en">${escapeHtml(t.en)}</span>` : ''}
+            ${t.ko ? `<span class="credit-ko">${escapeHtml(t.ko)}</span>` : ''}
+          </li>`).join('')}
+        </ul>
       </div>`
     : '';
 
@@ -83,14 +77,13 @@ function createArchiveCard(project) {
     </div>
     <p class="archive-card-yearclient">${escapeHtml(project.displayYear || project.year)} | ${escapeHtml(project.client)}</p>
     <h3 class="archive-card-title">${escapeHtml(project.title)}</h3>
-    <p class="archive-card-venue">${escapeHtml(project.venueEn)}</p>
-    <p class="archive-card-location">${escapeHtml(project.locationEn)}</p>
-    <p class="archive-card-desc">${escapeHtml(project.desc)}</p>
-    <div class="archive-card-role-block">
-      <p class="archive-card-role-label">Role</p>
-      <p class="archive-card-role-value">${escapeHtml(getDisplayRole(project))}</p>
+    ${project.venueEn ? `<p class="archive-card-venue">${escapeHtml(project.venueEn)}</p>` : ''}
+    ${project.locationEn ? `<p class="archive-card-location">${escapeHtml(project.locationEn)}</p>` : ''}
+    ${project.desc ? `<p class="archive-card-desc">${escapeHtml(project.desc)}</p>` : ''}
+    <div class="archive-card-credits">
+      ${roleHtml}
+      ${tasksHtml}
     </div>
-    ${tasksHtml}
   `;
 
   // 이미지 슬롯 채우기: project.image가 있으면 실제 이미지, 없으면(또는 로드 실패 시) 빈 회색 박스

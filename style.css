@@ -892,3 +892,136 @@ section {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+/* ==========================================================================
+   Fluid Typography (2026.11.17 추가)
+   작은 글씨들을 화면/카드 크기에 맞춰 자동으로 키우고 줄이는 구간입니다.
+   - 페이지 전체 라벨: 화면 너비(vw) 기준
+   - 프로젝트 카드 안 글씨: 카드 너비(cqi) 기준 → 모바일 1열·태블릿 2열·
+     데스크톱 3~4열 어디서든 카드 대비 비율이 비슷하게 유지됩니다.
+   clamp(최소, 기준값, 최대) — 최소/최대 숫자만 바꾸면 전체 밸런스 조절 가능.
+   ========================================================================== */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+:root {
+  --fs-label: clamp(12px, 0.2vw + 11px, 14px);   /* 대문자 라벨류 */
+  --fs-small: clamp(13px, 0.25vw + 12px, 15.5px); /* 필터 버튼 등 */
+  --fs-nav:   clamp(14px, 0.15vw + 13px, 16px);
+}
+
+/* ---- 페이지 공통 ---- */
+.site-nav a        { font-size: var(--fs-nav); }
+.hero-eyebrow      { font-size: var(--fs-small); }
+.hero-scroll       { font-size: var(--fs-label); }
+.section-num       { font-size: var(--fs-nav); }
+.about-facts dt    { font-size: var(--fs-label); }
+.filter-btn        { font-size: var(--fs-small); }
+.archive-empty     { font-size: clamp(15px, 0.3vw + 14px, 17px); }
+.contact-label     { font-size: var(--fs-label); }
+.back-to-top       { font-size: var(--fs-label); }
+.site-footer       { font-size: clamp(12px, 0.1vw + 11.5px, 13px); }
+
+/* ---- 프로젝트 카드 (카드 너비 기준) ---- */
+.archive-card { container-type: inline-size; }
+
+.archive-card-category     { font-size: clamp(11.5px, 3.4cqi, 13.5px); }
+.archive-card-yearclient   { font-size: clamp(12px, 3.5cqi, 14px); }
+.archive-card-title        { font-size: clamp(20px, 6.6cqi, 27px); }
+.archive-card-venue,
+.archive-card-location     { font-size: clamp(12.5px, 3.6cqi, 14.5px); }
+.archive-card-desc         { font-size: clamp(15px, 4.4cqi, 17.5px); }
+.archive-card-role-label,
+.archive-card-contrib-label { font-size: clamp(11px, 3.2cqi, 12.5px); }
+.archive-card-role-value   { font-size: clamp(14px, 4cqi, 16px); }
+.archive-card-tasks        { font-size: clamp(13px, 3.8cqi, 15px); line-height: 1.55; }
+
+/* ---- About 섹션 (2026.11.17) ----
+   노트북 화면(1000~1440px)에서 본문·라벨이 최소값(15px)에 머물러
+   제목·이름만 크고 나머지는 작아 보이던 불균형 보정. */
+.about-lead          { font-size: clamp(19px, 1.2vw + 14px, 36px); line-height: 1.45; }
+.about-body          { font-size: clamp(15.5px, 0.6vw + 12.5px, 22px); }
+.section-num         { font-size: clamp(14px, 0.3vw + 12px, 18px); }
+.about-facts dt      { font-size: clamp(12px, 0.3vw + 10.5px, 15px); margin-bottom: 10px; }
+.about-facts dd      { font-size: clamp(17px, 0.5vw + 15px, 24px); }
+.about-work dd       { gap: 6px; }
+.about-profile dd    { font-size: clamp(28px, 1.6vw + 26px, 52px); }
+
+/* ---- About 폭·간격 (2026.11.17) ----
+   1120px 폭 제한 해제 → 화면 폭을 다 쓰고, 줄바꿈 시엔 두 줄 길이를 고르게 맞춰
+   한 단어만 다음 줄로 떨어지지 않게 함. 영문-국문 사이 간격 축소. */
+.about-lead,
+.about-body {
+  max-width: none;
+  text-wrap: balance;
+  word-break: keep-all;
+}
+.about-lead { margin-bottom: clamp(10px, 0.9vw, 16px); }
+
+/* ==========================================================================
+   Card Credits — Role / Key Contributions 국영문 병기 (2026.11.22)
+   영문(진하게) 위, 국문(회색·작게) 아래로 짝을 지어 한눈에 매칭되게.
+   ========================================================================== */
+.archive-card-desc { word-break: keep-all; }
+
+.archive-card-credits {
+  border-top: 1px solid var(--gray-light);
+  padding-top: 18px;
+  display: grid;
+  gap: 20px;
+}
+
+.archive-card-credit-label {
+  font-size: clamp(10.5px, 3cqi, 12px);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gray);
+  margin-bottom: 8px;
+}
+
+.credit-en {
+  display: block;
+  font-size: clamp(13.5px, 3.9cqi, 15.5px);
+  font-weight: 600;
+  line-height: 1.4;
+  color: #1a1a1a;
+}
+
+.credit-ko {
+  display: block;
+  font-size: clamp(12.5px, 3.5cqi, 14px);
+  line-height: 1.5;
+  color: #8a8a8a;
+  word-break: keep-all;
+}
+
+.archive-card-role .credit-ko { margin-top: 3px; }
+
+.archive-card-tasks {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  font-size: inherit;
+  color: inherit;
+}
+
+.archive-card-tasks li {
+  position: relative;
+  padding-left: 14px;
+}
+
+.archive-card-tasks li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 6px;
+  height: 1px;
+  background: #b5b5b5;
+}
+
+.archive-card-tasks .credit-en { font-weight: 500; }
+.archive-card-tasks .credit-ko { margin-top: 1px; }
