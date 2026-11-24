@@ -276,7 +276,7 @@ const PROJECTS = [
   },
 
   {
-    company: "DRILLTIES", year: 2024, displayYear: "2023-2024",
+    company: "NBNDR", year: 2024, displayYear: "2023-2024",
     title: "BAEKHO MINI CONCERT 〈BAEKHoney DAY〉",
     client: "PLEDIS Entertainment · HYBE",
     category: "Live Concert",
@@ -424,7 +424,7 @@ const PROJECTS = [
   },
 
   {
-    company: "DRILLTIES", year: 2023,
+    company: "NBNDR", year: 2023,
     title: "HWANG MIN HYUN MINI CONCERT 〈UNVEIL〉",
     client: "PLEDIS Entertainment · HYBE",
     category: "Live Concert",
@@ -567,7 +567,7 @@ const PROJECTS = [
   },
 
   {
-    company: "DRILLTIES", year: 2020,
+    company: "NBNDR", year: 2020,
     title: "6·25전쟁 제70주년 기념식 〈영웅에게〉",
     client: "Ministry of National Defense · Ministry of Patriots and Veterans Affairs",
     category: "Official Ceremony",
@@ -589,7 +589,7 @@ const PROJECTS = [
   },
 
   {
-    company: "DRILLTIES", year: 2019,
+    company: "NBNDR", year: 2019,
     title: "AKMU 신규 앨범 청음회 〈가을밤의 항해〉",
     client: "YG Entertainment",
     category: "Live Event",
@@ -609,7 +609,7 @@ const PROJECTS = [
   },
 
   {
-    company: "DRILLTIES", year: 2019,
+    company: "NBNDR", year: 2019,
     title: "대통령 노르웨이 순방 계기 K팝 콘서트 & 한국 음악 콘서트 〈VOYAGE TO K-POP〉",
     client: "Korean Cultural Center in Norway",
     category: "VIP Ceremony · Live Concert",
@@ -631,7 +631,7 @@ const PROJECTS = [
   },
 
   {
-    company: "DRILLTIES", year: 2019,
+    company: "NBNDR", year: 2019,
     title: "2019 정동하 콘서트 〈동하 읽어주는 남자〉 Vol.1",
     client: "Oddeye Entertainment",
     category: "Live Concert",
@@ -712,7 +712,7 @@ const PROJECTS = [
   },
 
   {
-    company: "DRILLTIES", year: 2018,
+    company: "NBNDR", year: 2018,
     title: "제70주년 국군의 날 국군 유해 봉환행사 <대한민국의 이름으로 당신을 기억하겠습니다>",
     client: "Ministry of National Defense",
     category: "Official Ceremony",
@@ -732,7 +732,7 @@ const PROJECTS = [
   },
 
   {
-    company: "DRILLTIES", year: 2018,
+    company: "NBNDR", year: 2018,
     title: "조코 위도도 인도네시아 대통령 국빈방한 - 국빈만찬",
     client: "Cheong Wa Dae",
     category: "Official Ceremony",
@@ -754,7 +754,7 @@ const PROJECTS = [
   },
 
   {
-    company: "DRILLTIES", year: 2018,
+    company: "NBNDR", year: 2018,
     title: "DMZ PEACE TRAIN MUSIC FESTIVAL 2018",
     client: "Cheorwon County",
     category: "Festival",
@@ -772,7 +772,7 @@ const PROJECTS = [
   },
 
   {
-    company: "DRILLTIES", year: 2018,
+    company: "NBNDR", year: 2018,
     title: "에르도안 터키 대통령 국빈방문 - 국빈만찬",
     client: "Cheong Wa Dae",
     category: "Official Ceremony",
@@ -794,7 +794,7 @@ const PROJECTS = [
   },
 
   {
-    company: "DRILLTIES", year: 2018,
+    company: "NBNDR", year: 2018,
     title: "남북평화 협력기원 남측예술단 평양공연 〈봄이 온다〉",
     client: "Cheong Wa Dae · Ministry of Unification",
     category: "Live Concert",
@@ -856,7 +856,7 @@ const PROJECTS = [
   },
 
   {
-    company: "DRILLTIES", year: 2017,
+    company: "NBNDR", year: 2017,
     title: "트럼프 미국 대통령 초청 국빈만찬",
     client: "Cheong Wa Dae",
     category: "Official Ceremony",
@@ -878,7 +878,7 @@ const PROJECTS = [
   },
 
   {
-    company: "DRILLTIES", year: 2017,
+    company: "NBNDR", year: 2017,
     title: "올댓뮤직X인디스땅스2017",
     client: "Gyeonggi Content Agency",
     category: "Indie Music Competition & Showcase",
